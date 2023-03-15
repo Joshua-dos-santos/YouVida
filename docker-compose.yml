@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:
+  admindashboardapi:
+    image: ${DOCKER_REGISTRY-}admindashboardapi
+    build:
+      context: .
+      dockerfile: AdminDashboardAPI/AdminDashboardAPI/Dockerfile
+    ports:
+        - "5010:443"
+        - "5050:80"
+
+  authenticationapi:
+    image: ${DOCKER_REGISTRY-}authenticationapi
+    build:
+      context: .
+      dockerfile: AuthenticationAPI/AuthenticationAPI/Dockerfile
+    ports:
+        - "5011:443"
+        - "5051:80"
+
+
+  messagingapi:
+    image: ${DOCKER_REGISTRY-}messagingapi
+    build:
+      context: .
+      dockerfile: MessagingAPI/MessagingAPI/Dockerfile
+    ports:
+        - "5012:443"
+        - "5052:80"
+
+
+  postsapi:
+    image: ${DOCKER_REGISTRY-}postsapi
+    build:
+      context: .
+      dockerfile: PostsAPI/PostsAPI/Dockerfile
+    ports:
+        - "5013:443"
+        - "5053:80"
+
+  timelineapi:
+    image: ${DOCKER_REGISTRY-}timelineapi
+    build:
+      context: .
+      dockerfile: TimelineAPI/TimelineAPI/Dockerfile
+    ports:
+        - "5014:443"
+        - "5054:80"
+
+  userprofileapi:
+    image: ${DOCKER_REGISTRY-}userprofileapi
+    build:
+      context: .
+      dockerfile: UserProfileAPI/UserProfileAPI/Dockerfile
+    ports:
+        - "5015:443"
+        - "5055:80"
