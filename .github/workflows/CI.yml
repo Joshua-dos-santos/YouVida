@@ -22,11 +22,11 @@ jobs:
         dotnet-version: 6.0.x
       
     - name: Restore dependencies AuthenticationAPI
-      working-directory: YouVida/AuthenticationAPI/
+      working-directory: AuthenticationAPI/
       run: dotnet restore
       
     - name: Build AuthenticationAPI
-      working-directory: YouVida/AuthenticationAPI/
+      working-directory: AuthenticationAPI/
       run: dotnet build --no-restore -warnaserror
       
   build-and-test-AdminDashboardAPI:
@@ -58,11 +58,11 @@ jobs:
         dotnet-version: 6.0.x
       
     - name: Restore dependencies MessagingAPI
-      working-directory: YouVida/MessagingAPI/
+      working-directory: MessagingAPI/
       run: dotnet restore
       
     - name: Build MessagingAPI
-      working-directory: YouVida/MessagingAPI/
+      working-directory: MessagingAPI/
       run: dotnet build --no-restore -warnaserror
       
   build-and-test-PostsAPI:
@@ -76,11 +76,11 @@ jobs:
         dotnet-version: 6.0.x
       
     - name: Restore dependencies PostsAPI
-      working-directory: YouVida/PostsAPI/
+      working-directory: PostsAPI/
       run: dotnet restore
       
     - name: Build PostsAPI
-      working-directory: YouVida/PostsAPI/
+      working-directory: PostsAPI/
       run: dotnet build --no-restore -warnaserror
       
   build-and-test-TimelineAPI:
@@ -94,11 +94,11 @@ jobs:
         dotnet-version: 6.0.x
       
     - name: Restore dependencies TimelineAPI
-      working-directory: YouVida/TimelineAPI/
+      working-directory: TimelineAPI/
       run: dotnet restore
       
     - name: Build TimelineAPI
-      working-directory: YouVida/TimelineAPI/
+      working-directory: TimelineAPI/
       run: dotnet build --no-restore -warnaserror
       
   build-and-test-UserProfileAPI:
@@ -112,9 +112,9 @@ jobs:
         dotnet-version: 6.0.x
       
     - name: Restore dependencies UserProfileAPI
-      working-directory: YouVida/UserProfileAPI/
+      working-directory: UserProfileAPI/
       run: dotnet restore
       
     - name: Build UserProfileAPI
-      working-directory: YouVida/UserProfileAPI/
+      working-directory: UserProfileAPI/
       run: dotnet build --no-restore -warnaserror
