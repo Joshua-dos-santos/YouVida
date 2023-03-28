@@ -7,8 +7,7 @@ services:
       context: .
       dockerfile: AdminDashboardAPI/AdminDashboardAPI/Dockerfile
     ports:
-        - "5010:443"
-        - "5050:80"
+        - "8060:80"
 
   authenticationapi:
     image: ${DOCKER_REGISTRY-}authenticationapi
@@ -16,8 +15,7 @@ services:
       context: .
       dockerfile: AuthenticationAPI/AuthenticationAPI/Dockerfile
     ports:
-        - "5011:443"
-        - "5051:80"
+        - "8061:80"
 
 
   messagingapi:
@@ -26,8 +24,7 @@ services:
       context: .
       dockerfile: MessagingAPI/MessagingAPI/Dockerfile
     ports:
-        - "5012:443"
-        - "5052:80"
+        - "8062:80"
 
 
   postsapi:
@@ -36,8 +33,7 @@ services:
       context: .
       dockerfile: PostsAPI/PostsAPI/Dockerfile
     ports:
-        - "5013:443"
-        - "5053:80"
+        - "8063:80"
 
   timelineapi:
     image: ${DOCKER_REGISTRY-}timelineapi
@@ -45,8 +41,7 @@ services:
       context: .
       dockerfile: TimelineAPI/TimelineAPI/Dockerfile
     ports:
-        - "5014:443"
-        - "5054:80"
+        - "8064:80"
 
   userprofileapi:
     image: ${DOCKER_REGISTRY-}userprofileapi
@@ -54,5 +49,90 @@ services:
       context: .
       dockerfile: UserProfileAPI/UserProfileAPI/Dockerfile
     ports:
-        - "5015:443"
-        - "5055:80"
+        - "8065:80"
+
+  usersdb:
+    image: mariadb
+    ports:
+        - "3316:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+        - usersdata:/var/lib/mysql
+
+  messagingdb:
+    image: mariadb
+    ports:
+        - "3317:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+        - messagingdata:/var/lib/mysql
+
+  postsdb:
+    image: mariadb
+    ports:
+        - "3318:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+        - postsdata:/var/lib/mysql
+
+  tagsdb:
+    image: mariadb
+    ports:
+        - "3319:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+        - tagsdata:/var/lib/mysql
+
+  userspma:
+    depends_on: 
+     - usersdb
+    image: phpmyadmin/phpmyadmin  
+    container_name: userspma
+    restart: always
+    ports:
+     - '80:80'
+    environment: 
+     PMA_HOST: usersdb
+  
+  messagingpma:
+    depends_on: 
+     - messagingdb
+    image: phpmyadmin/phpmyadmin  
+    container_name: messagingpma
+    restart: always
+    ports:
+     - '81:80'
+    environment: 
+     PMA_HOST: messagingdb
+
+  postspma:
+    depends_on: 
+     - postsdb
+    image: phpmyadmin/phpmyadmin  
+    container_name: postspma
+    restart: always
+    ports:
+     - '82:80'
+    environment: 
+     PMA_HOST: postsdb
+
+  tagspma:
+    depends_on: 
+     - tagsdb
+    image: phpmyadmin/phpmyadmin  
+    container_name: tagspma
+    restart: always
+    ports:
+     - '83:80'
+    environment: 
+     PMA_HOST: tagsdb
+  
+volumes:
+ usersdata:
+ postsdata:
+ messagingdata:
+ tagsdata:
