@@ -6,7 +6,7 @@
     <ProjectGuid>42215d71-97db-4806-acec-1f9767b89d21</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>admindashboardapi</DockerServiceName>
+    <DockerServiceName>tagapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
