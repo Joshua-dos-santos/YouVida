@@ -3,19 +3,20 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["AdminDashboardAPI/AdminDashboardAPI/AdminDashboardAPI.csproj", "AdminDashboardAPI/AdminDashboardAPI/"]
-RUN dotnet restore "AdminDashboardAPI/AdminDashboardAPI/AdminDashboardAPI.csproj"
+COPY ["TagAPI/TagAPI/TagAPI.csproj", "TagAPI/TagAPI/"]
+RUN dotnet restore "TagAPI/TagAPI/TagAPI.csproj"
 COPY . .
-WORKDIR "/src/AdminDashboardAPI/AdminDashboardAPI"
-RUN dotnet build "AdminDashboardAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/TagAPI/TagAPI"
+RUN dotnet build "TagAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AdminDashboardAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TagAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AdminDashboardAPI.dll"]
+ENTRYPOINT ["dotnet", "TagAPI.dll"]

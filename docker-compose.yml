@@ -1,11 +1,11 @@
 version: '3.4'
 
 services:
-  admindashboardapi:
-    image: ${DOCKER_REGISTRY-}admindashboardapi
+  tagapi:
+    image: ${DOCKER_REGISTRY-}tagapi
     build:
       context: .
-      dockerfile: AdminDashboardAPI/AdminDashboardAPI/Dockerfile
+      dockerfile: TagAPI/TagAPI/Dockerfile
     ports:
         - "8060:80"
 
@@ -131,6 +131,8 @@ services:
     environment: 
      PMA_HOST: tagsdb
   
+
+
 volumes:
  usersdata:
  postsdata:
