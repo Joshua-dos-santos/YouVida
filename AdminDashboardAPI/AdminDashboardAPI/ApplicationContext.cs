@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TagAPI.Models;
-using System.Collections.Generic;
 
 namespace TagAPI
 {
