@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "AdminDashboardAPI": {
+    "TagAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
