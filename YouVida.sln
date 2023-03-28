@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserProfileAPI", "UserProfi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimelineAPI", "TimelineAPI\TimelineAPI\TimelineAPI.csproj", "{CD951B97-72DF-4C0A-80D8-299655F5749F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminDashboardAPI", "AdminDashboardAPI\AdminDashboardAPI\AdminDashboardAPI.csproj", "{D13A837A-C3FA-4BD7-9504-FE7E51BA62E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TagAPI", "AdminDashboardAPI\AdminDashboardAPI\TagAPI.csproj", "{D13A837A-C3FA-4BD7-9504-FE7E51BA62E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagingAPI", "MessagingAPI\MessagingAPI\MessagingAPI.csproj", "{5DEB3224-B5B2-4410-BF97-C9A629CF2E81}"
 EndProject
