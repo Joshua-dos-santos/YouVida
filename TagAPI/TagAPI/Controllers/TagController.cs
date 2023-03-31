@@ -29,7 +29,7 @@ namespace TagAPI.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> Create(PostTag tag)
+        public async Task<IActionResult> Create(Tag tag)
         {
             await this.context.Tags.AddAsync(tag);
             await this.context.SaveChangesAsync();
@@ -37,7 +37,7 @@ namespace TagAPI.Controllers
         }
 
         [HttpPut("")]
-        public async Task<IActionResult> Update(PostTag tag)
+        public async Task<IActionResult> Update(Tag tag)
         {
             this.context.Tags.Update(tag);
             await this.context.SaveChangesAsync();

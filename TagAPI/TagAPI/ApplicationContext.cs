@@ -9,7 +9,7 @@ namespace TagAPI
             : base(options)
         {
         }
-        public DbSet<PostTag> Tags { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
     }
 }

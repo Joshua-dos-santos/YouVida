@@ -31,7 +31,7 @@ namespace TagAPI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Create(PostTag postTag)
         {
-            await this.context.Tags.AddAsync(postTag);
+            await this.context.PostTags.AddAsync(postTag);
             await this.context.SaveChangesAsync();
             return this.Ok(postTag);
         }
@@ -39,7 +39,7 @@ namespace TagAPI.Controllers
         [HttpPut("")]
         public async Task<IActionResult> Update(PostTag postTag)
         {
-            this.context.Tags.Update(postTag);
+            this.context.PostTags.Update(postTag);
             await this.context.SaveChangesAsync();
             return this.Ok(postTag);
         }
@@ -48,7 +48,7 @@ namespace TagAPI.Controllers
         public async Task<IActionResult> Delete(Guid postTagId)
         {
             var postTag = await this.context.PostTags.Where(x => x.PostTagId == postTagId).FirstAsync();
-            this.context.Tags.Remove(postTag);
+            this.context.PostTags.Remove(postTag);
             return this.Ok(await this.context.SaveChangesAsync());
         }
     }
