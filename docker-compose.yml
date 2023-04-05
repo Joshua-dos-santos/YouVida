@@ -17,7 +17,6 @@ services:
     ports:
         - "8061:80"
 
-
   messagingapi:
     image: ${DOCKER_REGISTRY-}messagingapi
     build:
@@ -25,7 +24,6 @@ services:
       dockerfile: MessagingAPI/MessagingAPI/Dockerfile
     ports:
         - "8062:80"
-
 
   postsapi:
     image: ${DOCKER_REGISTRY-}postsapi
