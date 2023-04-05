@@ -17,7 +17,6 @@ services:
     ports:
         - "8061:80"
 
-
   messagingapi:
     image: ${DOCKER_REGISTRY-}messagingapi
     build:
@@ -25,7 +24,6 @@ services:
       dockerfile: MessagingAPI/MessagingAPI/Dockerfile
     ports:
         - "8062:80"
-
 
   postsapi:
     image: ${DOCKER_REGISTRY-}postsapi
@@ -50,6 +48,14 @@ services:
       dockerfile: UserProfileAPI/UserProfileAPI/Dockerfile
     ports:
         - "8065:80"
+
+  youvidagateway:
+    image: ${DOCKER_REGISTRY-}youvidagateway
+    build:
+      context: .
+      dockerfile: YouVidaGateway/YouVidaGateway/Dockerfile
+    ports:
+        - "8066:80"
 
   usersdb:
     image: mariadb
@@ -130,11 +136,11 @@ services:
      - '83:80'
     environment: 
      PMA_HOST: tagsdb
-  
-
 
 volumes:
  usersdata:
  postsdata:
  messagingdata:
  tagsdata:
+
+
