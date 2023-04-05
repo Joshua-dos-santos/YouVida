@@ -49,6 +49,14 @@ services:
     ports:
         - "8065:80"
 
+  youvidagateway:
+    image: ${DOCKER_REGISTRY-}youvidagateway
+    build:
+      context: .
+      dockerfile: YouVidaGateway/YouVidaGateway/Dockerfile
+    ports:
+        - "8066:80"
+
   usersdb:
     image: mariadb
     ports:
@@ -128,11 +136,11 @@ services:
      - '83:80'
     environment: 
      PMA_HOST: tagsdb
-  
-
 
 volumes:
  usersdata:
  postsdata:
  messagingdata:
  tagsdata:
+
+
