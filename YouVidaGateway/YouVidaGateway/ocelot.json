@@ -24,11 +24,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/authentication/{catchall}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     },
     // Messaging API
     {
@@ -54,11 +50,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/posts/{catchall}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     // Tag API
     {

@@ -12,5 +12,6 @@ namespace UserProfileAPI
         }
         public DbSet<User> User { get; set; }
         public DbSet<UserPost> UserPost { get; set; }
+        public DbSet<UserFollower> UserFollower { get; set; }
     }
 }
