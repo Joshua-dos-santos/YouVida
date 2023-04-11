@@ -5,7 +5,7 @@ using TagAPI.Models;
 namespace TagAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/tag/[controller]")]
     public class PostTagController : ControllerBase
     {
         private readonly ApplicationContext context;
