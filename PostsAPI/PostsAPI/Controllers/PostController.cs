@@ -7,7 +7,7 @@ using PostsAPI.Models;
 namespace PostsAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/posts/[controller]")]
     public class PostController : ControllerBase
     {
         private readonly ApplicationContext context;
