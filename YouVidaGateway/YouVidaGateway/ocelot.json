@@ -1,0 +1,93 @@
+{
+  "Routes": [
+    // Expose login
+    {
+      "DownstreamPathTemplate": "/api/authentication/token/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.authentication",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/authentication/token/login",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    },
+    // Authentication API
+    {
+      "DownstreamPathTemplate": "/api/authentication/{catchall}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/authentication/{catchall}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // Messaging API
+    {
+      "DownstreamPathTemplate": "/api/messaging/{catchall}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "messagingapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/messaging/{catchall}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    },
+    // Posts API
+    {
+      "DownstreamPathTemplate": "/api/posts/{catchall}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "postsapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/posts/{catchall}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // Tag API
+    {
+      "DownstreamPathTemplate": "/api/tag/{catchall}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tagapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/tag/{catchall}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    },
+    // User API
+    {
+      "DownstreamPathTemplate": "/api/users/{catchall}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userprofileapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/{catchall}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8066"
+  }
+}

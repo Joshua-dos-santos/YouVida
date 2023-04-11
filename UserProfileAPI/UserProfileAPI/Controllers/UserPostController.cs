@@ -5,7 +5,7 @@ using UserProfileAPI.Models;
 namespace UserProfileAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users/[controller]")]
     public class UserPostController : Controller
     {
         private readonly ApplicationContext context;
