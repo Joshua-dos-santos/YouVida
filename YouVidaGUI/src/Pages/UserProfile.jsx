@@ -38,17 +38,11 @@ const Home = () => {
             })
     }
 
-    posts.forEach(post => {
-        console.log(post.postId);
-        }
-    )
-
     return (
         isAuthenticated &&
         <div>
-            <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing}/>
+            <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length}/>
             <button style={{marginLeft: '3vw'}} onClick={getPosts}>Get Posts</button>
-            <button onClick={() => setPosts([])}>Clear</button>
             <UserPosts posts={[{title: 'test', body: 'test'}]}/>
         </div>
     )

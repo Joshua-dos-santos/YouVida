@@ -3,7 +3,6 @@ import API from '../Services/api'
 
 const Postsapi = {
     fetchAllPosts: async () => {
-
         return await API.get(`api/posts/Post`)
             .then((res) => res)
             .catch((err) => err)
@@ -14,7 +13,6 @@ const Postsapi = {
             .then((res) => res)
             .catch((err) => err)
     },
-
     fetchPostsById: async (id) => {
             return await API.get(`api/posts/Post/${id}`)
                 .then((res) => res)
