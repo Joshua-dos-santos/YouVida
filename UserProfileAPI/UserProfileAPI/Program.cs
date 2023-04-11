@@ -10,6 +10,11 @@ public class Program
 
         // Add services to the container.
 
+        builder.Services.AddCors(c =>
+        {
+            c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+        });
+
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -50,6 +55,8 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+
+        app.UseCors(builder => builder.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
 
         app.UseAuthorization();
 

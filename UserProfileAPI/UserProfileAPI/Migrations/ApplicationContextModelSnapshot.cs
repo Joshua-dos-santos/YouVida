@@ -51,6 +51,23 @@ namespace UserProfileAPI.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("UserProfileAPI.Models.UserFollower", b =>
+                {
+                    b.Property<Guid>("UserFollowerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("UserFollowerId");
+
+                    b.ToTable("UserFollower");
+                });
+
             modelBuilder.Entity("UserProfileAPI.Models.UserPost", b =>
                 {
                     b.Property<Guid>("UserPostId")
@@ -60,8 +77,8 @@ namespace UserProfileAPI.Migrations
                     b.Property<Guid>("PostId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
+                    b.Property<string>("UserId")
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserPostId");
 

@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             domain={domain}
             clientId={clientId}
             authorizationParams={{
-                redirectUri:"http:localhost:8069/"
+                redirectUri:"http:localhost:8069/profile"
             }}
         >
             <App/>

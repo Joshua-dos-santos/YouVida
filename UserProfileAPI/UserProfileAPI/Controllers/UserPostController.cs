@@ -47,8 +47,8 @@ namespace UserProfileAPI.Controllers
         [HttpDelete("{userpostId:guid}")]
         public async Task<IActionResult> Delete(Guid userpostId)
         {
-            var postTag = await this.context.UserPost.Where(x => x.UserPostId == userpostId).FirstAsync();
-            this.context.UserPost.Remove(postTag);
+            var userPost = await this.context.UserPost.Where(x => x.UserPostId == userpostId).FirstAsync();
+            this.context.UserPost.Remove(userPost);
             return this.Ok(await this.context.SaveChangesAsync());
         }
     }
