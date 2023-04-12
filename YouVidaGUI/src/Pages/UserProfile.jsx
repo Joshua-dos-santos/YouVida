@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import Profile from "../Components/UserProfile/Profile";
-import UserPosts from "../Components/UserProfile/UserPosts";
+import Posts from "../Components/Posts/Posts";
 import Postsapi from "../Services/Posts";
 import {useAuth0} from "@auth0/auth0-react";
 import UserFollowersAPI from "../Services/UserFollowers";
 
 
-const Home = () => {
+const UserProfile = () => {
 
     const {user, isAuthenticated, isLoading} = useAuth0();
 
@@ -19,9 +19,9 @@ const Home = () => {
     const [userFollowing, setUserFollowing] = useState([])
     const getPosts = () => {
         Postsapi
-            .fetchPostsByUser()
+            .fetchAllPosts()
             .then((res) => {
-                const filteredData = res.data.filter(item => item.userId === user.sub)
+                const filteredData = res.data.filter(item => item.createdBy === user.sub)
                 setPosts(filteredData)
             })
         UserFollowersAPI
@@ -43,9 +43,9 @@ const Home = () => {
         <div>
             <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length}/>
             <button style={{marginLeft: '3vw'}} onClick={getPosts}>Get Posts</button>
-            <UserPosts posts={[{title: 'test', body: 'test'}]}/>
+            <Posts posts={posts}/>
         </div>
     )
 }
 
-export default Home
+export default UserProfile

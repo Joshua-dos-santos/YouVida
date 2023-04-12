@@ -30,9 +30,9 @@ namespace PostsAPI.Controllers
             return this.Ok(await this.context.Posts.Where(x => x.PostId == postId).FirstOrDefaultAsync());
         }
 
-        [HttpPost("")]
+        [HttpPost]
         public async Task<IActionResult> Create(Post post)
-        {
+            {
             await this.context.Posts.AddAsync(post);
             await this.context.SaveChangesAsync();
             return this.Ok(post);

@@ -1,0 +1,55 @@
+.postBody {
+    background-color: #f8f9fa;
+    min-width: 100%;
+    min-height: 30vh;
+    box-shadow: #002c48 1px 1px 3px 3px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4vh;
+}
+
+.postBody img{
+    float: left;
+    border-radius: 999px;
+    width: 4vw;
+}
+.postBody h3{
+    float: left;
+}
+
+.card h1 {
+    color: Black;
+    margin-left: 2vw;
+}
+
+.card h2 {
+    color: Black;
+    margin-left: 2vw;
+}
+.card h3{
+    color: Black;
+    margin-left: 2vw;
+}
+
+.card .fa-trash-can {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 1vh;
+}
+
+.card .fa-thumbs-up {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 2.5vh;
+}
+
+.card p {
+    float: right;
+    margin-top: 3vh;
+}
+
+.card-container {
+    background-color: #ffffff;
+    min-width: 90vw;
+    min-height: 20vh;
+}
