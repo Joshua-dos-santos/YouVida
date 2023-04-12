@@ -2,6 +2,7 @@ form{
     display: flex;
     flex-direction: column;
     margin-left: 15vw;
+    margin-top: 10vh;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
@@ -9,7 +10,7 @@ form{
 }
 
 input[type=text], select {
-    width: 100%;
+    width: 30vw;
     padding: 12px 20px;
     margin: 8px 0;
     background-color: #ffffff;
@@ -33,4 +34,9 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #45a049;
+}
+
+h1{
+    color: #000000;
+    font-family: "Century Gothic";
 }

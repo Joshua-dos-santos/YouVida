@@ -19,9 +19,9 @@ const UserProfile = () => {
     const [userFollowing, setUserFollowing] = useState([])
     const getPosts = () => {
         Postsapi
-            .fetchPostsByUser()
+            .fetchAllPosts()
             .then((res) => {
-                const filteredData = res.data.filter(item => item.userId === user.sub)
+                const filteredData = res.data.filter(item => item.createdBy === user.sub)
                 setPosts(filteredData)
             })
         UserFollowersAPI
@@ -43,7 +43,7 @@ const UserProfile = () => {
         <div>
             <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length}/>
             <button style={{marginLeft: '3vw'}} onClick={getPosts}>Get Posts</button>
-            <Posts posts={[{title: 'test', body: 'test'}]}/>
+            <Posts posts={posts}/>
         </div>
     )
 }

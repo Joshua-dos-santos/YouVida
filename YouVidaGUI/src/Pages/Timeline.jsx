@@ -22,18 +22,11 @@ const Timeline = () => {
             })
     }
 
-    const addPost = () => {
-        Postsapi
-            .postNewPost({title: 'YOLO', body: 'New Post', createdBy: user.sub})
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
-
     return(
         <div>
-            <button style={{marginLeft: '3vw'}} onClick={getPosts}>Get Posts</button>
-            <button style={{marginLeft: '3vw'}} onClick={AddNewPost}>Add new</button>
-            <Posts posts={posts}/>
+            <button style={{marginLeft: '3vw', marginTop: '3vh'}} onClick={getPosts}>Get Posts</button>
+            <button style={{marginLeft: '3vw', marginTop: '3vh'}} onClick={AddNewPost}>Add new</button>
+            <Posts posts={posts} user={user}/>
         </div>
     )
 }

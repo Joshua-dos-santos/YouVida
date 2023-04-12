@@ -1,36 +1,57 @@
 import React from "react";
 import {MDBCard, MDBCol, MDBContainer, MDBRow} from "mdb-react-ui-kit";
 import {useAuth0} from "@auth0/auth0-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrashCan, faThumbsUp} from "@fortawesome/free-solid-svg-icons";
+import Postsapi from "../../Services/Posts";
+import '../../Stylesheets/Posts.css'
 
-const Posts = ({posts}) => {
+
+const Posts = ({posts, user}) => {
 
     const { isAuthenticated } = useAuth0();
 
+    const deletePost = (id) => {
+        Postsapi
+            .deletePost(id)
+            .then(console.log("deleted"))
+            .catch(err => console.log(err))
+    }
 
     return (
         isAuthenticated &&
         <div>
-            {posts && posts.map((post) => {
+            {posts &&
+            posts.map((post) => {
                 return (
-                    <div style={{backgroundColor: '#ffffff', minWidth: '100vw', minHeight: '20vh'}} key={post}>
+                    <div className="card-container" key={post}>
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol>
                                     <MDBCard>
-                                        <div style={{
-                                            backgroundColor: '#f8f9fa',
-                                            minWidth: '100%',
-                                            minHeight: '20vh',
-                                            boxShadow: ' #002c48 1px 1px 3px 3px'
-                                        }}>
-                                            <h1 style={{color: 'Black', marginLeft: '2vw'}}>{post.title}</h1>
-                                            <h2 style={{color: 'Black', marginLeft: '2vw'}}>{post.body}</h2>
+                                        <div className="post">
+                                            <h3>{user.name}</h3>
+                                            <FontAwesomeIcon
+                                                icon={faTrashCan}
+                                                size="xl"
+                                                className="fa-trash-can"
+                                                onClick={() => deletePost(post.postId)}
+                                            />
+                                            <h1>{post.title}</h1>
+                                            <FontAwesomeIcon
+                                                icon={faThumbsUp}
+                                                size="xl"
+                                                className="fa-thumbs-up"
+                                            />
+                                            <p>Likes {/*TODO Get likes from backend*/}</p>
+                                            <h2>{post.body}</h2>
                                         </div>
                                     </MDBCard>
                                 </MDBCol>
                             </MDBRow>
                         </MDBContainer>
-                    </div>)
+                    </div>
+                );
             })}
         </div>
     )
