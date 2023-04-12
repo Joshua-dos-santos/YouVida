@@ -1,8 +1,20 @@
-.post {
+.postBody {
     background-color: #f8f9fa;
     min-width: 100%;
-    min-height: 20vh;
+    min-height: 30vh;
     box-shadow: #002c48 1px 1px 3px 3px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4vh;
+}
+
+.postBody img{
+    float: left;
+    border-radius: 999px;
+    width: 4vw;
+}
+.postBody h3{
+    float: left;
 }
 
 .card h1 {
@@ -11,6 +23,10 @@
 }
 
 .card h2 {
+    color: Black;
+    margin-left: 2vw;
+}
+.card h3{
     color: Black;
     margin-left: 2vw;
 }

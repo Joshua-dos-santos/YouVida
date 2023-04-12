@@ -1,5 +1,5 @@
 import React from "react";
-import {MDBCard, MDBCol, MDBContainer, MDBRow} from "mdb-react-ui-kit";
+import {MDBCard, MDBCardBody, MDBCardHeader, MDBCol, MDBContainer, MDBRow} from "mdb-react-ui-kit";
 import {useAuth0} from "@auth0/auth0-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrashCan, faThumbsUp} from "@fortawesome/free-solid-svg-icons";
@@ -28,9 +28,11 @@ const Posts = ({posts, user}) => {
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol>
-                                    <MDBCard>
-                                        <div className="post">
-                                            <h3>{user.name}</h3>
+                                    <MDBCard className="postBody">
+                                        <MDBCardHeader>
+                                            <img src={user.picture}/><h3>{user.name}</h3>
+                                        </MDBCardHeader>
+                                        <MDBCardBody>
                                             <FontAwesomeIcon
                                                 icon={faTrashCan}
                                                 size="xl"
@@ -45,7 +47,7 @@ const Posts = ({posts, user}) => {
                                             />
                                             <p>Likes {/*TODO Get likes from backend*/}</p>
                                             <h2>{post.body}</h2>
-                                        </div>
+                                        </MDBCardBody>
                                     </MDBCard>
                                 </MDBCol>
                             </MDBRow>
