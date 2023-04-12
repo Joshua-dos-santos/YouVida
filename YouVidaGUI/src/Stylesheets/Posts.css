@@ -5,7 +5,9 @@
     box-shadow: #002c48 1px 1px 3px 3px;
     display: flex;
     flex-direction: column;
+    margin-top: 4vh;
     margin-bottom: 4vh;
+    margin-left: 3vw;
 }
 
 .postBody img{
