@@ -2,7 +2,7 @@ import React from "react";
 import {MDBCard, MDBCol, MDBContainer, MDBRow} from "mdb-react-ui-kit";
 import {useAuth0} from "@auth0/auth0-react";
 
-const UserPosts = ({posts}) => {
+const Posts = ({posts}) => {
 
     const { isAuthenticated } = useAuth0();
 
@@ -12,7 +12,7 @@ const UserPosts = ({posts}) => {
         <div>
             {posts && posts.map((post) => {
                 return (
-                    <div style={{backgroundColor: '#ffffff', minWidth: '100vw', minHeight: '20vh'}} key={post.postId}>
+                    <div style={{backgroundColor: '#ffffff', minWidth: '100vw', minHeight: '20vh'}} key={post}>
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol>
@@ -36,4 +36,4 @@ const UserPosts = ({posts}) => {
     )
 }
 
-export default UserPosts
+export default Posts

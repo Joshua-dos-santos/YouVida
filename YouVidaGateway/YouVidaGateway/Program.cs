@@ -28,6 +28,8 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
+        
+        app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
         app.UseAuthorization();
 

@@ -1,4 +1,4 @@
-    using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PostsAPI;
 using Polly;
 
@@ -7,6 +7,18 @@ public class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var CorsSetup = "_corsSetup";
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: CorsSetup,
+            policy =>
+            {
+                policy.WithOrigins("http://localhost:8069")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+            });
+        });
 
         // Add services to the container.
 
@@ -15,16 +27,14 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddCors(c =>
-        {
-            c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-        });
 
         var cs = builder.Configuration.GetConnectionString("DefaultConnection")!;
         builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseMySql(cs, ServerVersion.AutoDetect(cs)));
 
         var app = builder.Build();
+
+        app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
         // Create polly policy for database connection:
         var policy = Policy.Handle<Exception>().WaitAndRetryForever(
@@ -53,11 +63,10 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        app.UseRouting();
 
         app.UseAuthorization();
 
-        app.UseCors(builder => builder.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
 
         app.MapControllers();
 

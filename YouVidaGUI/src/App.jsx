@@ -4,6 +4,7 @@ import NavbarAuthenticated from "./Components/NavbarAuthenticated";
 import UserProfile from "./Pages/UserProfile";
 import UnauthenticatedNavbar from "./Components/UnauthenticatedNavbar";
 import Timeline from "./Pages/Timeline"
+import AddNewPost from "./Pages/AddNewPost";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Routes>
               <Route path='/' element={<Timeline/>} />
               <Route path='/profile' element={<UserProfile/>} />
+              <Route path='/AddNewPost' element={<AddNewPost/>} />
           </Routes>
       </Router>
   );
