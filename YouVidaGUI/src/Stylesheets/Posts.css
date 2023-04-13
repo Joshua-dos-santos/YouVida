@@ -14,9 +14,9 @@
 .postBody img{
     float: left;
     border-radius: 999px;
-    width: 4vw;
+    width: 3vw;
 }
-.postBody h3{
+.postBody h4 {
     float: left;
     color: #000000;
 }
@@ -30,9 +30,9 @@
     color: Black;
     margin-left: 2vw;
 }
-.card h3{
+.card h4{
     color: Black;
-    margin-left: 2vw;
+    margin-left: 1vw;
     color: #000000;
 }
 
@@ -41,6 +41,10 @@
     margin-right: 1vw;
     margin-top: 1vh;
     color: #000000;
+}
+
+.card .fa-trash-can:hover {
+    color: red;
 }
 
 .card .fa-thumbs-up {

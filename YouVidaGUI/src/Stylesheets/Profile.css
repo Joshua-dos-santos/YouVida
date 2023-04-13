@@ -1,10 +1,10 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fbc2eb;
+.card .fa-plus {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 19vh;
+    color: #000000;
+}
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to top, #646cff, #ffffff);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to top, #646cff, #ffffff)
+.card .fa-plus:hover{
+    color: #8398e9;
 }

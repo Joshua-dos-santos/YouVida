@@ -7,14 +7,18 @@ import Postsapi from "../../Services/Posts";
 import '../../Stylesheets/Posts.css'
 
 
+
 const Posts = ({posts, user}) => {
 
     const { isAuthenticated } = useAuth0();
 
+
     const deletePost = (id) => {
         Postsapi
             .deletePost(id)
-            .then(console.log("deleted"))
+            .then(res => {
+                console.log(res);
+            })
             .catch(err => console.log(err))
     }
 
@@ -30,7 +34,8 @@ const Posts = ({posts, user}) => {
                                 <MDBCol>
                                     <MDBCard className="postBody">
                                         <MDBCardHeader>
-                                            <img src={user.picture}/><h3>{user.name}</h3>
+                                            <img src={user.picture} alt="profile"/><h4>{user.name}</h4>
+                                            <p>{post.createdAt}</p>
                                         </MDBCardHeader>
                                         <MDBCardBody>
                                             <FontAwesomeIcon

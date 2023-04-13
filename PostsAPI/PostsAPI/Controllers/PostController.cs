@@ -33,6 +33,7 @@ namespace PostsAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Post post)
             {
+            post.CreatedAt = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
             await this.context.Posts.AddAsync(post);
             await this.context.SaveChangesAsync();
             return this.Ok(post);

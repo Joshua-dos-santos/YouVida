@@ -2,11 +2,11 @@ import React from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import Postsapi from "../Services/Posts";
 import '../Stylesheets/AddNewPost.css'
-import {Router} from "react-router";
-import Timeline from "./Timeline";
+import {useNavigate} from "react-router-dom";
 
 const AddNewPost = () => {
     const {user} = useAuth0()
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         const formData = new FormData(event.currentTarget);
@@ -14,6 +14,7 @@ const AddNewPost = () => {
         Postsapi.postNewPost({ title: formData.get("Title"),body: formData.get("Body"), createdBy: user.sub})
             .then(res => {
                 console.log("Success" + res);
+                navigate("/profile")
             })
             .catch(err => console.log(err))
 
@@ -25,7 +26,7 @@ const AddNewPost = () => {
                 <h1>Add new post</h1>
                 <input type="text" name="Title" placeholder="Title" />
                 <input type="text" name="Body" placeholder="Body" />
-                <button to="/" type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )

@@ -9,14 +9,15 @@ import UserFollowersAPI from "../Services/UserFollowers";
 const UserProfile = () => {
 
     const {user, isAuthenticated, isLoading} = useAuth0();
-    const [posts, setPosts] = useState([])
-    const [userFollowers, setUserFollowers] = useState([])
-    const [userFollowing, setUserFollowing] = useState([])
+
 
     if (isLoading) {
         return <div>Loading ...</div>;
     }
 
+    const [posts, setPosts] = useState([])
+    const [userFollowers, setUserFollowers] = useState([])
+    const [userFollowing, setUserFollowing] = useState([])
 
     const getPosts = () => {
         Postsapi
@@ -41,7 +42,7 @@ const UserProfile = () => {
 
     useEffect(() => {
         getPosts();
-    }, []);
+    }, [posts]);
 
     return (
         isAuthenticated &&
