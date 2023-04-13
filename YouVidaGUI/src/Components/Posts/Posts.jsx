@@ -33,8 +33,8 @@ const Posts = ({posts, user}) => {
                             <MDBRow>
                                 <MDBCol>
                                     <MDBCard className="postBody">
-                                        <MDBCardHeader>
-                                            <img src={user.picture} alt="profile"/><h4>{user.name}</h4>
+                                        <MDBCardHeader style={{marginTop: '1vh', borderBottom: '#1a253f solid'}}>
+                                            <img src={user.picture} alt="profile"/><h4>{user.nickname}</h4>
                                             <p>{post.createdAt}</p>
                                         </MDBCardHeader>
                                         <MDBCardBody>

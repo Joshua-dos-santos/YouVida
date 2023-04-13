@@ -19,8 +19,8 @@ namespace PostsAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Get()
-        {
-            return this.Ok(await this.context.Posts.ToListAsync());
+        { 
+            return this.Ok(await this.context.Posts.OrderBy(x => x.CreatedAt).Reverse().ToListAsync());
         }
 
        
