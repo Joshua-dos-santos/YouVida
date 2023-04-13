@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Postsapi from "../Services/Posts";
 import Posts from "../Components/Posts/Posts";
 import {useAuth0} from "@auth0/auth0-react";
@@ -22,9 +22,12 @@ const Timeline = () => {
             })
     }
 
+    useEffect(() => {
+        getPosts();
+    }, []);
+
     return(
         <div>
-            <button style={{marginLeft: '3vw', marginTop: '3vh'}} onClick={getPosts}>Get Posts</button>
             <button style={{marginLeft: '3vw', marginTop: '3vh'}} onClick={AddNewPost}>Add new</button>
             <Posts posts={posts} user={user}/>
         </div>

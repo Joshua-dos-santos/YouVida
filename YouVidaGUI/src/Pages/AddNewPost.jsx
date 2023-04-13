@@ -25,7 +25,7 @@ const AddNewPost = () => {
                 <h1>Add new post</h1>
                 <input type="text" name="Title" placeholder="Title" />
                 <input type="text" name="Body" placeholder="Body" />
-                <button type="submit">Submit</button>
+                <button to="/" type="submit">Submit</button>
             </form>
         </div>
     )

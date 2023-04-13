@@ -1,5 +1,6 @@
 .postBody {
     background-color: #f8f9fa;
+    color: #000000;
     min-width: 100%;
     min-height: 30vh;
     box-shadow: #002c48 1px 1px 3px 3px;
@@ -17,6 +18,7 @@
 }
 .postBody h3{
     float: left;
+    color: #000000;
 }
 
 .card h1 {
@@ -31,18 +33,21 @@
 .card h3{
     color: Black;
     margin-left: 2vw;
+    color: #000000;
 }
 
 .card .fa-trash-can {
     float: right;
     margin-right: 1vw;
     margin-top: 1vh;
+    color: #000000;
 }
 
 .card .fa-thumbs-up {
     float: right;
     margin-right: 1vw;
     margin-top: 2.5vh;
+    color: #000000;
 }
 
 .card p {

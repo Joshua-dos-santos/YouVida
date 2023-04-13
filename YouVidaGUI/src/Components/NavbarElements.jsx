@@ -6,8 +6,7 @@ export const Nav = styled.nav`
   background: #1a253f;
   height: 10vh;
   display: flex;
-  justify-content: space-between;
-  width: 100vw;
+  min-width: 100vw;
 `;
 
 export const NavLink = styled(Link)`
@@ -25,7 +24,7 @@ export const NavLink = styled(Link)`
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #002c48;
+  color: #ffffff;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -40,8 +39,8 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
-  margin-left: 2vh;
+  min-width: 100vw;
+  margin-left: auto;
   @media screen and (max-width: 768px) {
     display: none;
   }

@@ -2,9 +2,9 @@
   font-family: "Century Gothic";
   line-height: 1.5;
   font-weight: 400;
-
+  overflow-x: hidden;
   color-scheme: light dark;
-  color: #000000;
+  color: #ffffff;
   background-color: #ffffff;
 
   font-synthesis: none;
