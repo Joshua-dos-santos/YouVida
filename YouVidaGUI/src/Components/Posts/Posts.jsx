@@ -28,7 +28,7 @@ const Posts = ({posts, user}) => {
             {posts &&
             posts.map((post) => {
                 return (
-                    <div className="card-container" key={post}>
+                    <div className="card-container" key={post.title}>
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol>

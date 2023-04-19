@@ -19,14 +19,14 @@ const NavbarAuthenticated = () => {
                 <Nav>
                     <NavMenu>
                         <NavbarBrand to='/' style={{fontSize: 'x-large', marginRight: '3vw'}}><img src={Logo}/>YouVida</NavbarBrand>
-                        <NavLink to='/' activeStyle>
+                        <NavLink to='/'>
                             Timeline
                         </NavLink>
-                        <NavLink to='/profile' activeStyle>
+                        <NavLink to='/profile'>
                             Profile
                         </NavLink>
                         <div style={{marginLeft: 'auto',marginRight: '2vw', display: 'flex', flexDirection: 'row', minWidth: '10vw'}}>
-                        <p style={{marginRight: '2vw'}}>Welcome, {user.name}</p>
+                        <p style={{marginRight: '2vw'}}>Welcome, {user.nickname}</p>
                         <LoginButton/>
                         <LogoutButton/>
                         </div>

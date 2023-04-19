@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import Profile from "../Components/UserProfile/Profile";
 import Posts from "../Components/Posts/Posts";
 import Postsapi from "../Services/Posts";
 import {useAuth0} from "@auth0/auth0-react";
 import UserFollowersAPI from "../Services/UserFollowers";
+import UserAPI from "../Services/Users";
 
 
 const UserProfile = () => {
@@ -18,6 +19,20 @@ const UserProfile = () => {
     const [posts, setPosts] = useState([])
     const [userFollowers, setUserFollowers] = useState([])
     const [userFollowing, setUserFollowing] = useState([])
+
+    useEffect(() => {
+        getPosts();
+    }, [posts]);
+
+    useEffect(() => {
+        postUser();
+    }, [user]);
+
+    const postUser = () => {
+        UserAPI
+            .postUser(user)
+            .then(res => console.log(res))
+    }
 
     const getPosts = () => {
         Postsapi
@@ -40,9 +55,7 @@ const UserProfile = () => {
             })
     }
 
-    useEffect(() => {
-        getPosts();
-    }, [posts]);
+
 
     return (
         isAuthenticated &&

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlTypes;
 using UserProfileAPI.Models;
 
 namespace UserProfileAPI.Controllers
@@ -23,7 +24,7 @@ namespace UserProfileAPI.Controllers
 
 
         [HttpGet("{userId:guid}")]
-        public async Task<IActionResult> GetById(Guid userId)
+        public async Task<IActionResult> GetById(string userId)
         {
             return this.Ok(await this.context.User.Where(x => x.UserId == userId).FirstOrDefaultAsync());
         }
@@ -31,6 +32,11 @@ namespace UserProfileAPI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Create(User user)
         {
+            user.CreatedAt = DateTime.Now.AddHours(2);
+            if (await this.context.User.ContainsAsync(user))
+            {
+                return Ok(user);
+            }
             await this.context.User.AddAsync(user);
             await this.context.SaveChangesAsync();
             return this.Ok(user);
@@ -45,7 +51,7 @@ namespace UserProfileAPI.Controllers
         }
 
         [HttpDelete("{userId:guid}")]
-        public async Task<IActionResult> Delete(Guid userId)
+        public async Task<IActionResult> Delete(string userId)
         {
             var postTag = await this.context.User.Where(x => x.UserId == userId).FirstAsync();
             this.context.User.Remove(postTag);
