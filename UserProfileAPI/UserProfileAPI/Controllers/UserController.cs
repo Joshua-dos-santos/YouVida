@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlTypes;
+using System.Net;
+using System.Text.Encodings.Web;
 using UserProfileAPI.Models;
 
 namespace UserProfileAPI.Controllers
@@ -23,7 +25,7 @@ namespace UserProfileAPI.Controllers
         }
 
 
-        [HttpGet("{userId:guid}")]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetById(string userId)
         {
             return this.Ok(await this.context.User.Where(x => x.UserId == userId).FirstOrDefaultAsync());

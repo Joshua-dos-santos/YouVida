@@ -10,18 +10,11 @@ import '../../Stylesheets/Profile.css'
 import {faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useNavigate} from "react-router-dom";
-import UserAPI from "../../Services/Users";
+
 
 const Profile = ({postCount, user, followerCount, followingCount}) => {
 
     const navigate = useNavigate();
-
-    const registerUser = () => {
-        UserAPI
-            .postUser(user)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    }
 
     return (
             <div style={{ backgroundColor: '#ffffff', minWidth: '100vw' }}>

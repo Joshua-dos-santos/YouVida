@@ -11,7 +11,7 @@ const UserAPI = {
             method: 'post',
             headers: headers,
             data: {
-                UserId: user.sub,
+                UserId: user.sub.replace("|", "t"),
                 Email: user.email,
                 Name: user.name,
                 Profilepic: user.picture,
@@ -23,8 +23,8 @@ const UserAPI = {
             .then((res) => res)
             .catch((err) => err)
     },
-    getUsers: async () => {
-        return await API.get(`api/users/User`)
+    getUserById: async (id) => {
+        return await API.get(`api/users/User/${id}`)
             .then((res) => res)
             .catch((err) => err)
     }

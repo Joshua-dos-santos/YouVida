@@ -11,7 +11,7 @@ const AddNewPost = () => {
     const handleSubmit = (event) => {
         const formData = new FormData(event.currentTarget);
         event.preventDefault();
-        Postsapi.postNewPost({ title: formData.get("Title"),body: formData.get("Body"), createdBy: user.sub})
+        Postsapi.postNewPost({ title: formData.get("Title"),body: formData.get("Body"), createdBy: user.sub.replace("|", "t")})
             .then(res => {
                 console.log("Success" + res);
                 navigate("/profile")
