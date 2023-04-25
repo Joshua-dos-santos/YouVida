@@ -13,9 +13,8 @@ const AddNewPost = () => {
         const formData = new FormData(event.currentTarget);
         event.preventDefault();
         Postsapi.postNewPost({ title: formData.get("Title"),body: formData.get("Body"), createdBy: user.sub.replace("|", "t")})
-            .then(res => {
-                console.log("Success" + res);
-                UserAPI.postUser(user).then(res => console.log(res));
+            .then(() => {
+                UserAPI.postUser(user).then(res => res);
                 navigate("/profile")
             })
             .catch(err => console.log(err))

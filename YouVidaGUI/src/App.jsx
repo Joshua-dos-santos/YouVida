@@ -6,6 +6,7 @@ import UnauthenticatedNavbar from "./Components/UnauthenticatedNavbar";
 import Timeline from "./Pages/Timeline"
 import AddNewPost from "./Pages/AddNewPost";
 import SearchUsers from "./Pages/SearchUsers";
+import GuestProfile from "./Pages/GuestProfile";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
               <Route path='/' element={<Timeline/>} />
               <Route path='/profile' element={<UserProfile/>} />
               <Route path='/AddNewPost' element={<AddNewPost/>} />
+              <Route path="/Gprofile" element={<GuestProfile/>}/>
               <Route path='/SearchProfiles' element={<SearchUsers/>} />
           </Routes>
       </Router>

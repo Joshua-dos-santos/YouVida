@@ -12,7 +12,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useNavigate} from "react-router-dom";
 
 
-const Profile = ({postCount, user, followerCount, followingCount}) => {
+const Profile = ({postCount, user, followerCount, followingCount, profilepic}) => {
 
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Profile = ({postCount, user, followerCount, followingCount}) => {
                         <MDBCol >
                             <MDBCard>
                                 <div style={{height: '20vh'}}>
-                                        <MDBCardImage src={user.picture}
+                                        <MDBCardImage src={profilepic}
                                                       alt="Generic placeholder image"  fluid style={{ width: '10vw', borderRadius: '999px' }} />
                                     <FontAwesomeIcon
                                         icon={faSquarePlus}
@@ -37,7 +37,6 @@ const Profile = ({postCount, user, followerCount, followingCount}) => {
                                 </div>
                                 <div style={{ backgroundColor: '#f8f9fa', minWidth: '100%', minHeight: '30vh', boxShadow: ' #002c48 1px 1px 3px 3px' }}>
                                     <h1 style={{color: 'Black', marginLeft: '2vw'}}>{user.name}</h1>
-                                    <h2 style={{color: 'Black', marginLeft: '2vw'}}>{user.nickname}</h2>
                                     <h2 style={{color: 'Black', marginLeft: '2vw'}}>{user.email}</h2>
                                 </div>
                             </MDBCard>

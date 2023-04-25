@@ -3,10 +3,13 @@ import UserAPI from "../Services/Users";
 import '../Stylesheets/SearchUsers.css'
 import {useAuth0} from "@auth0/auth0-react";
 import UserFollowersAPI from "../Services/UserFollowers";
+import {createSearchParams, useNavigate} from "react-router-dom";
 
 const SearchUsers = () => {
 
     const{user} = useAuth0();
+
+    const navigate = useNavigate();
 
     const [users, setUsers] = useState([])
     const [query, setQuery] = useState("");
@@ -18,7 +21,6 @@ const SearchUsers = () => {
     }
 
     const followUser = (userId) => {
-        console.log(user.sub.replace("|", "t") + " follows " + userId)
         UserFollowersAPI
             .postUserFollower(userId, user.sub.replace("|", "t"))
             .then(() => console.log("Following"))
@@ -30,6 +32,7 @@ const SearchUsers = () => {
         );
         setFilteredUsers(filtered);
     };
+
 
     useEffect(() => {
         getUsers();
@@ -51,7 +54,14 @@ const SearchUsers = () => {
                 <tbody>
                 {filteredUsers.map((Suser) => (
                     <tr key={Suser.userId}>
-                        <td><img id="userpic" src={Suser.profilepic}/>{Suser.email}</td>
+                        <td onDoubleClick={() => {
+                            navigate({
+                                pathname: "/Gprofile",
+                                search: createSearchParams({
+                                    id: Suser.userId
+                                }).toString()
+                            });
+                        }}><img id="userpic" src={Suser.profilepic}/>{Suser.email}</td>
                         <button onClick={() => followUser(Suser.userId)}>Follow</button>
                     </tr>
                 ))}

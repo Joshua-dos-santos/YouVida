@@ -18,8 +18,7 @@ const Posts = ({post, getPosts}) => {
     const deletePost = (id) => {
         Postsapi
             .deletePost(id)
-            .then(res => {
-                console.log(res);
+            .then(() => {
                 getPosts()
             })
             .catch(err => console.log(err))
