@@ -3,6 +3,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import Postsapi from "../Services/Posts";
 import '../Stylesheets/AddNewPost.css'
 import {useNavigate} from "react-router-dom";
+import UserAPI from "../Services/Users";
 
 const AddNewPost = () => {
     const {user} = useAuth0()
@@ -14,6 +15,7 @@ const AddNewPost = () => {
         Postsapi.postNewPost({ title: formData.get("Title"),body: formData.get("Body"), createdBy: user.sub.replace("|", "t")})
             .then(res => {
                 console.log("Success" + res);
+                UserAPI.postUser(user).then(res => console.log(res));
                 navigate("/profile")
             })
             .catch(err => console.log(err))

@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from "react";
 import UserAPI from "../Services/Users";
 import '../Stylesheets/SearchUsers.css'
+import {useAuth0} from "@auth0/auth0-react";
+import UserFollowersAPI from "../Services/UserFollowers";
 
 const SearchUsers = () => {
+
+    const{user} = useAuth0();
 
     const [users, setUsers] = useState([])
     const [query, setQuery] = useState("");
@@ -11,6 +15,13 @@ const SearchUsers = () => {
     const getUsers = () => {
         UserAPI
             .getAllUsers().then(res => setUsers(res.data))
+    }
+
+    const followUser = (userId) => {
+        console.log(user.sub.replace("|", "t") + " follows " + userId)
+        UserFollowersAPI
+            .postUserFollower(userId, user.sub.replace("|", "t"))
+            .then(() => console.log("Following"))
     }
 
     const filterUsers = (query) => {
@@ -38,10 +49,10 @@ const SearchUsers = () => {
             />
             <table id="items" className="fl-table">
                 <tbody>
-                {filteredUsers.map((user) => (
-                    <tr key={user.userId}>
-                        <td>{user.name}</td>
-                        <button>Follow</button>
+                {filteredUsers.map((Suser) => (
+                    <tr key={Suser.userId}>
+                        <td><img id="userpic" src={Suser.profilepic}/>{Suser.email}</td>
+                        <button onClick={() => followUser(Suser.userId)}>Follow</button>
                     </tr>
                 ))}
                 </tbody>

@@ -25,7 +25,6 @@ const Posts = ({post}) => {
     }
 
     const getUser = (userId) => {
-        console.log(1);
         UserAPI
             .getUserById(userId)
             .then(res => {

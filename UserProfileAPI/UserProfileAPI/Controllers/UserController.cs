@@ -34,10 +34,10 @@ namespace UserProfileAPI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Create(User user)
         {
-            user.CreatedAt = DateTime.Now.AddHours(2);
+            user.CreatedAt = DateTime.Now;
             if (await this.context.User.ContainsAsync(user))
             {
-                return Ok(user);
+                return this.Ok(user);
             }
             await this.context.User.AddAsync(user);
             await this.context.SaveChangesAsync();

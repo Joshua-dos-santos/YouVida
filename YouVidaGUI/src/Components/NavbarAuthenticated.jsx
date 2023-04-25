@@ -2,14 +2,13 @@ import React from 'react';
 import {
     Nav,
     NavLink,
-    Bars,
     NavMenu,
 } from './NavbarElements';
 import LoginButton from "./Authentication/LoginButton";
 import LogoutButton from "./Authentication/LogoutButton";
 import {useAuth0} from "@auth0/auth0-react";
 import {NavbarBrand} from "react-bootstrap";
-import Logo from '../assets/react.svg'
+import Logo from '../assets/youvida.png'
 
 const NavbarAuthenticated = () => {
     const {user, isAuthenticated} = useAuth0();
@@ -18,7 +17,7 @@ const NavbarAuthenticated = () => {
             <>
                 <Nav>
                     <NavMenu>
-                        <NavbarBrand to='/' style={{fontSize: 'x-large', marginRight: '3vw'}}><img src={Logo}/>YouVida</NavbarBrand>
+                        <NavbarBrand to='/' style={{fontSize: 'x-large', marginRight: '3vw'}}><img style={{width: '7vw', marginLeft: '2vw'}} alt="logo" src={Logo}/></NavbarBrand>
                         <NavLink to='/'>
                             Timeline
                         </NavLink>
