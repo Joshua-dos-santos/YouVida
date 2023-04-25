@@ -27,6 +27,11 @@ const UserAPI = {
         return await API.get(`api/users/User/${id}`)
             .then((res) => res)
             .catch((err) => err)
+    },
+    getAllUsers: async () => {
+        return await API.get(`api/users/User`)
+            .then((res) => res)
+            .catch((err) => err)
     }
 }
 

@@ -25,6 +25,9 @@ const NavbarAuthenticated = () => {
                         <NavLink to='/profile'>
                             Profile
                         </NavLink>
+                        <NavLink to='/SearchProfiles'>
+                            Search...
+                        </NavLink>
                         <div style={{marginLeft: 'auto',marginRight: '2vw', display: 'flex', flexDirection: 'row', minWidth: '10vw'}}>
                         <p style={{marginRight: '2vw'}}>Welcome, {user.nickname}</p>
                         <LoginButton/>
