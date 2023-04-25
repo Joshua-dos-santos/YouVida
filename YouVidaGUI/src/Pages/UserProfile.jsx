@@ -15,9 +15,8 @@ const UserProfile = () => {
     const [userFollowing, setUserFollowing] = useState([])
 
     const getPosts = () => {
-        Postsapi.fetchAllPosts().then((res) => {
-            const filteredData = res.data.filter(item => item.createdBy === user?.sub?.replace("|", "t"));
-            setPosts(filteredData);
+        Postsapi.fetchPostsByUser(user?.sub?.replace("|", "t")).then((res) => {
+            setPosts(res.data);
         });
     }
 
@@ -54,7 +53,7 @@ const UserProfile = () => {
             <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length}/>
             {
                 posts.map((item)=>{
-                    return <Posts post={item} key={item.postId}/>
+                    return <Posts post={item} getPosts={getPosts} key={item.postId}/>
                 })
             }
         </div>

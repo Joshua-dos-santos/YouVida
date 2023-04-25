@@ -9,10 +9,10 @@ import UserAPI from "../../Services/Users";
 
 
 
-const Posts = ({post}) => {
-    const { isAuthenticated } = useAuth0();
+const Posts = ({post, getPosts}) => {
+    const { user, isAuthenticated } = useAuth0();
 
-    const [user, setUser] = useState([])
+    const [usert, setUser] = useState([])
 
 
     const deletePost = (id) => {
@@ -20,6 +20,7 @@ const Posts = ({post}) => {
             .deletePost(id)
             .then(res => {
                 console.log(res);
+                getPosts()
             })
             .catch(err => console.log(err))
     }
@@ -46,16 +47,18 @@ const Posts = ({post}) => {
                         <MDBCol>
                             <MDBCard className="postBody">
                                 <MDBCardHeader style={{marginTop: '1vh', borderBottom: '#1a253f solid'}}>
-                                    <img src={user.profilepic} alt="profile"/><h4>{user.email}</h4>
+                                    <img src={usert.profilepic} alt="profile"/><h4>{usert.email}</h4>
                                     <p>{post.createdAt}</p>
                                 </MDBCardHeader>
                                 <MDBCardBody>
-                                    <FontAwesomeIcon
+                                    {post.createdBy == user?.sub?.replace("|", "t") &&
+                                    < FontAwesomeIcon
                                         icon={faTrashCan}
                                         size="xl"
                                         className="fa-trash-can"
                                         onClick={() => deletePost(post.postId)}
-                                    />
+                                        />
+                                    }
                                     <h1>{post.title}</h1>
                                     <FontAwesomeIcon
                                         icon={faThumbsUp}

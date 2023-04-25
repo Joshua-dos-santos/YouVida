@@ -20,7 +20,7 @@ namespace PostsAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         { 
-            return this.Ok(await this.context.Posts.OrderBy(x => x.CreatedAt).Reverse().ToListAsync());
+            return this.Ok(await this.context.Posts.OrderByDescending(x => x.CreatedAt).ToListAsync());
         }
 
        
@@ -28,6 +28,12 @@ namespace PostsAPI.Controllers
         public async Task<IActionResult> GetById(Guid postId)
         {
             return this.Ok(await this.context.Posts.Where(x => x.PostId == postId).FirstOrDefaultAsync());
+        }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetByUser(string userId)
+        {
+            return this.Ok(await this.context.Posts.Where(x => x.CreatedBy == userId).OrderByDescending(x => x.CreatedAt).ToListAsync());
         }
 
         [HttpPost]

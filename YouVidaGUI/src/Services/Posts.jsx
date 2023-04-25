@@ -12,8 +12,8 @@ const Postsapi = {
             .catch((err) => err)
     },
 
-    fetchPostsByUser: async () => {
-        return await API.get(`api/users/UserPost`)
+    fetchPostsByUser: async (id) => {
+        return await API.get(`api/posts/Post/${id}`)
             .then((res) => res)
             .catch((err) => err)
     },
