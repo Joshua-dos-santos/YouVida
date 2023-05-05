@@ -43,7 +43,7 @@ const SearchUsers = () => {
             <input
                 id="SearchBar"
                 type="text"
-                placeholder="Search for a user"
+                placeholder="Search for a user "
                 value={query}
                 onChange={(e) => {
                     setQuery(e.target.value);
@@ -54,7 +54,7 @@ const SearchUsers = () => {
                 <tbody>
                 {filteredUsers.map((Suser) => (
                     <tr key={Suser.userId}>
-                        <td onDoubleClick={() => {
+                        <td onClick={() => {
                             navigate({
                                 pathname: "/Gprofile",
                                 search: createSearchParams({

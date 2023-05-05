@@ -37,7 +37,7 @@ const UserProfile = () => {
     useEffect(() => {
         getPosts();
         getFollows();
-    }, []);
+    }, [user]);
 
     useEffect(() =>{
         createUser();

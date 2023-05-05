@@ -17,7 +17,7 @@ const Profile = ({postCount, user, followerCount, followingCount, profilepic}) =
     const navigate = useNavigate();
 
     return (
-            <div style={{ backgroundColor: '#ffffff', minWidth: '100vw' }}>
+            <div style={{ backgroundColor: '#ffffff', minWidth: '100vw', marginTop: '1vh'}}>
                 <MDBContainer>
                     <MDBRow >
                         <MDBCol >

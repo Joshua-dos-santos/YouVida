@@ -12,7 +12,7 @@ import UserAPI from "../../Services/Users";
 const Posts = ({post, getPosts}) => {
     const { user, isAuthenticated } = useAuth0();
 
-    const [usert, setUser] = useState([])
+    const [postUser, setUser] = useState([])
 
 
     const deletePost = (id) => {
@@ -46,12 +46,12 @@ const Posts = ({post, getPosts}) => {
                         <MDBCol>
                             <MDBCard className="postBody">
                                 <MDBCardHeader style={{marginTop: '1vh', borderBottom: '#1a253f solid'}}>
-                                    <img src={usert.profilepic} alt="profile"/><h4>{usert.email}</h4>
+                                    <img src={postUser.profilepic} alt="profile"/><h4>{postUser.email}</h4>
                                     <p>{post.createdAt}</p>
                                 </MDBCardHeader>
                                 <MDBCardBody>
-                                    {post.createdBy == user?.sub?.replace("|", "t") &&
-                                    < FontAwesomeIcon
+                                    {post.createdBy === user?.sub?.replace("|", "t") &&
+                                    <FontAwesomeIcon
                                         icon={faTrashCan}
                                         size="xl"
                                         className="fa-trash-can"

@@ -42,13 +42,14 @@ const GuestProfile = () => {
         GetUserById();
     }, [])
 
+    useEffect(() =>{
+        getPosts();
+        getFollows();
+    }, [user])
+
     return(
         <div>
             <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length} profilepic={user.profilepic}/>
-            <button onClick={() => {
-                getPosts();
-                getFollows();
-            }} >See Data</button>
             {
                 posts.map((item)=>{
                     return <Posts post={item} getPosts={getPosts} key={item.postId}/>
