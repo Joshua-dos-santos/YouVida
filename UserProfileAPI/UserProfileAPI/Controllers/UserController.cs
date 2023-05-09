@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Connections;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Polly;
+using RabbitMQ.Client;
 using System.Data.SqlTypes;
 using System.Net;
+using System.Text;
 using System.Text.Encodings.Web;
 using UserProfileAPI.Models;
+using UserProfileAPI.Services;
 
 namespace UserProfileAPI.Controllers
 {
@@ -12,10 +17,12 @@ namespace UserProfileAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly ApplicationContext context;
+        private readonly UserService userService;
 
-        public UserController(ApplicationContext context)
+        public UserController(ApplicationContext context, UserService service)
         {
             this.context = context;
+            this.userService = service;
         }
 
         [HttpGet]
@@ -55,9 +62,15 @@ namespace UserProfileAPI.Controllers
         [HttpDelete("{userId}")]
         public async Task<IActionResult> Delete(string userId)
         {
-            var user = await this.context.User.Where(x => x.UserId == userId).FirstAsync();
-            this.context.User.Remove(user);
-            return this.Ok(await this.context.SaveChangesAsync());
+            bool Succes = await this.userService.DeleteUser(userId);
+            if (Succes)
+            {
+                return this.Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
