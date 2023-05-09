@@ -30,7 +30,7 @@ const NavbarAuthenticated = () => {
                             <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" style={{marginRight: '0.5vw'}}/> Search...
                         </NavLink>
                         <div style={{marginLeft: 'auto',marginRight: '2vw', display: 'flex', flexDirection: 'row', minWidth: '10vw'}}>
-                        <p style={{marginRight: '2vw'}}>Welcome, {user.nickname}</p>
+                        <p style={{marginRight: '2vw', color: 'white'}}>Welcome, {user.nickname}</p>
                         <LoginButton/>
                         <LogoutButton/>
                         </div>
