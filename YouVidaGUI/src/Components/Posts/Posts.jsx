@@ -46,7 +46,7 @@ const Posts = ({post, getPosts}) => {
                         <MDBCol>
                             <MDBCard className="postBody">
                                 <MDBCardHeader style={{marginTop: '1vh', borderBottom: '#1a253f solid'}}>
-                                    <img src={postUser.profilepic} alt="profile"/><h4>{postUser.email}</h4>
+                                    <img src={postUser.profilepic} alt="profile"/><h4>@ {postUser.username}</h4>
                                     <p>{post.createdAt}</p>
                                 </MDBCardHeader>
                                 <MDBCardBody>

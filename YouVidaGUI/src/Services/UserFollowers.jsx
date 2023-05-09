@@ -23,7 +23,19 @@ const UserFollowersAPI = {
         })
             .then((res) => res)
             .catch((err) => err)
-    }
+    },
+
+    deleteUserFollower: async (userFollowerId) => {
+        return await API(`api/users/UserFollower`, {
+            method: 'delete',
+            headers: headers,
+            data: {
+                UserFollowerId: userFollowerId,
+            }
+        })
+            .then((res) => res)
+            .catch((err) => err)
+    },
 }
 
 export default UserFollowersAPI

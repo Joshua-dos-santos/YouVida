@@ -15,7 +15,7 @@ const UserAPI = {
                 Email: user.email,
                 Name: user.name,
                 Profilepic: user.picture,
-                Username: user.username,
+                Username: user.nickname,
                 CreatedAt: user.updated_at,
                 LastLogin: user.updated_at,
             }
@@ -30,6 +30,13 @@ const UserAPI = {
     },
     getAllUsers: async () => {
         return await API.get(`api/users/User`)
+            .then((res) => res)
+            .catch((err) => err)
+    },
+    deleteUser: async (userId) => {
+        return await API.delete(`api/users/User/${userId}`, {
+            headers: headers
+        })
             .then((res) => res)
             .catch((err) => err)
     }

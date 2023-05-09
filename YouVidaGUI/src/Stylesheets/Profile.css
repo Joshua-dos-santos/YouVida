@@ -8,3 +8,15 @@
 .card .fa-plus:hover {
     color: #8398e9;
 }
+
+.DeleteButton{
+    float: right;
+    margin-right: 1vw;
+    margin-top: 19vh;
+    margin-bottom: 5vh;
+    background-color: red;
+}
+
+.DeleteButton:hover{
+    background-color: darkred;
+}

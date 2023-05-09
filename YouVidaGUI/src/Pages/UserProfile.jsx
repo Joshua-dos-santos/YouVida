@@ -50,7 +50,7 @@ const UserProfile = () => {
     return (
         isAuthenticated &&
         <div>
-            <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length} profilepic={user.picture}/>
+            <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length} profilepic={user.picture} loggedIn={true}/>
             {
                 posts.map((item)=>{
                     return <Posts post={item} getPosts={getPosts} key={item.postId}/>

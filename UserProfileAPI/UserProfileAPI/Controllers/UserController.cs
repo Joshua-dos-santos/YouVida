@@ -52,11 +52,11 @@ namespace UserProfileAPI.Controllers
             return this.Ok(user);
         }
 
-        [HttpDelete("{userId:guid}")]
+        [HttpDelete("{userId}")]
         public async Task<IActionResult> Delete(string userId)
         {
-            var postTag = await this.context.User.Where(x => x.UserId == userId).FirstAsync();
-            this.context.User.Remove(postTag);
+            var user = await this.context.User.Where(x => x.UserId == userId).FirstAsync();
+            this.context.User.Remove(user);
             return this.Ok(await this.context.SaveChangesAsync());
         }
     }
