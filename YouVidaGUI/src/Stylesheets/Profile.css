@@ -3,20 +3,27 @@
     margin-right: 1vw;
     margin-top: 19vh;
     color: #000000;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
 }
 
 .card .fa-plus:hover {
     color: #8398e9;
 }
 
-.DeleteButton{
+.DeleteButton {
     float: right;
     margin-right: 1vw;
     margin-top: 19vh;
-    margin-bottom: 5vh;
     background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.DeleteButton:hover{
+.DeleteButton:hover {
     background-color: darkred;
 }
