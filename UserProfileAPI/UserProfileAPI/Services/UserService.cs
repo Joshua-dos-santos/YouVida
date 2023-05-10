@@ -2,6 +2,7 @@
 using Polly;
 using RabbitMQ.Client;
 using System.Text;
+using UserProfileAPI.Models;
 
 namespace UserProfileAPI.Services
 {
@@ -13,6 +14,42 @@ namespace UserProfileAPI.Services
         {
             this.context = context;
         }
+
+        public async Task<List<User>> GetUsers()
+        {
+            List<User> users = await this.context.User.ToListAsync();
+            return users;
+        }
+
+        public async Task<User>GetUserById(string userId)
+        {
+            var user = await this.context.User.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+            if (user == null)
+            {
+                throw new NullReferenceException("there is no user with this ID");
+            }
+            return user;
+        }
+
+        public async Task<User> CreateUser(User user)
+        {
+            user.CreatedAt = DateTime.Now;
+            if (await this.context.User.ContainsAsync(user))
+            {
+                return user;
+            }
+            await this.context.User.AddAsync(user);
+            await this.context.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<User> UpdateUser(User user)
+        {
+            this.context.User.Update(user);
+            await this.context.SaveChangesAsync();
+            return user;
+        }
+
         public async Task<bool> DeleteUser(string userId)
         {
             try

@@ -16,47 +16,36 @@ namespace UserProfileAPI.Controllers
     [Route("api/users/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ApplicationContext context;
         private readonly UserService userService;
 
-        public UserController(ApplicationContext context, UserService service)
+        public UserController(UserService service)
         {
-            this.context = context;
             this.userService = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return this.Ok(await this.context.User.ToListAsync());
+            return this.Ok(await this.userService.GetUsers());
         }
 
 
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetById(string userId)
         {
-            return this.Ok(await this.context.User.Where(x => x.UserId == userId).FirstOrDefaultAsync());
+            return this.Ok(await this.userService.GetUserById(userId));
         }
 
         [HttpPost("")]
         public async Task<IActionResult> Create(User user)
-        {
-            user.CreatedAt = DateTime.Now;
-            if (await this.context.User.ContainsAsync(user))
-            {
-                return this.Ok(user);
-            }
-            await this.context.User.AddAsync(user);
-            await this.context.SaveChangesAsync();
-            return this.Ok(user);
+        { 
+            return this.Ok(await this.userService.CreateUser(user));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> Update(User user)
-        {
-            this.context.User.Update(user);
-            await this.context.SaveChangesAsync();
-            return this.Ok(user);
+        { 
+            return this.Ok(await this.userService.UpdateUser(user));
         }
 
         [HttpDelete("{userId}")]
