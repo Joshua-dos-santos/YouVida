@@ -61,7 +61,7 @@ const SearchUsers = () => {
                                     id: Suser.userId
                                 }).toString()
                             });
-                        }}><img id="userpic" src={Suser.profilepic}/>{Suser.email}</td>
+                        }}><img id="userpic" src={Suser.profilepic}/>@{Suser.username}</td>
                         <button onClick={() => followUser(Suser.userId)}>Follow</button>
                     </tr>
                 ))}

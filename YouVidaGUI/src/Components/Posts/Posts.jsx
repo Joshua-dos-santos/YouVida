@@ -51,21 +51,22 @@ const Posts = ({post, getPosts}) => {
                                 </MDBCardHeader>
                                 <MDBCardBody>
                                     {post.createdBy === user?.sub?.replace("|", "t") &&
-                                    <FontAwesomeIcon
-                                        icon={faTrashCan}
-                                        size="xl"
-                                        className="fa-trash-can"
-                                        onClick={() => deletePost(post.postId)}
-                                        />
+                                            <FontAwesomeIcon
+                                                icon={faTrashCan}
+                                                size="xl"
+                                                className="fa-trash-can"
+                                                onClick={() => deletePost(post.postId)}
+                                            />
                                     }
                                     <h1>{post.title}</h1>
-                                    <FontAwesomeIcon
-                                        icon={faThumbsUp}
-                                        size="xl"
-                                        className="fa-thumbs-up"
-                                    />
-                                    <p>Likes {/*TODO Get likes from backend*/}</p>
                                     <h2>{post.body}</h2>
+                                    <div className="Likes">
+                                        <p><FontAwesomeIcon
+                                            icon={faThumbsUp}
+                                            size="xl"
+                                            className="fa-thumbs-up"
+                                        />Likes {/*TODO Get likes from backend*/}</p>
+                                    </div>
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>
