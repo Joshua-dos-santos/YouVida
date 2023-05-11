@@ -3,10 +3,11 @@ using Polly;
 using RabbitMQ.Client;
 using System.Text;
 using UserProfileAPI.Models;
+using UserProfileAPI.Services.Interfaces;
 
 namespace UserProfileAPI.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly ApplicationContext context;
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using UserProfileAPI.Models;
 using UserProfileAPI.Services;
+using UserProfileAPI.Services.Interfaces;
 
 namespace UserProfileAPI.Controllers
 {
@@ -16,9 +17,9 @@ namespace UserProfileAPI.Controllers
     [Route("api/users/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public UserController(UserService service)
+        public UserController(IUserService service)
         {
             this.userService = service;
         }

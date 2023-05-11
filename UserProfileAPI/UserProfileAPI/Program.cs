@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using UserProfileAPI;
+using UserProfileAPI.Services;
+using UserProfileAPI.Services.Interfaces;
 
 public class Program
 {
@@ -19,6 +21,7 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddScoped<IUserService, UserService>();
 
         var cs = builder.Configuration.GetConnectionString("DefaultConnection")!;
         builder.Services.AddDbContext<ApplicationContext>(options =>
