@@ -1,11 +1,17 @@
 form {
-    display: flex;
-    flex-direction: column;
-    max-width: 40vw;
-    margin: 10vh auto;
+    max-width: 80vw;
     padding: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
+}
+
+.AddForm{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="text"],

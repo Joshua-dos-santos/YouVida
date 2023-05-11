@@ -22,7 +22,7 @@ const AddNewPost = () => {
     };
 
     return (
-        <div>
+        <div className="AddForm">
             <form onSubmit={handleSubmit}>
                 <h1>Add new post</h1>
                 <input type="text" name="Title" placeholder="Title" />
