@@ -53,8 +53,12 @@ const Profile = ({postCount, user, followerCount, followingCount, profilepic, lo
                                     <h2 style={{color: 'Black', float: 'right', marginRight: '3vw'}}>Following: {followingCount}</h2>
                                 </div>
                                 <div style={{ backgroundColor: '#f8f9fa', minWidth: '100%', minHeight: '30vh', boxShadow: ' #002c48 1px 1px 3px 3px' }}>
+                                    {user.username ==  null &&
+                                    <h1 style={{color: 'Black', marginLeft: '2vw'}}>{user.nickname}</h1>
+                                    }
+                                    {user.username != null &&
                                     <h1 style={{color: 'Black', marginLeft: '2vw'}}>{user.username}</h1>
-                                    <h2 style={{color: 'Black', marginLeft: '2vw'}}>{user.email}</h2>
+                                    }
                                 </div>
                             </MDBCard>
                         </MDBCol>

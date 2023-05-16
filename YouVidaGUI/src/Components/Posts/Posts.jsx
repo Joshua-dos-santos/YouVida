@@ -61,11 +61,11 @@ const Posts = ({post, getPosts}) => {
                                     <h1>{post.title}</h1>
                                     <h2>{post.body}</h2>
                                     <div className="Likes">
-                                        <p><FontAwesomeIcon
+                                        <p> <FontAwesomeIcon
                                             icon={faThumbsUp}
                                             size="xl"
                                             className="fa-thumbs-up"
-                                        />Likes {/*TODO Get likes from backend*/}</p>
+                                        /> 5 </p>
                                     </div>
                                 </MDBCardBody>
                             </MDBCard>
