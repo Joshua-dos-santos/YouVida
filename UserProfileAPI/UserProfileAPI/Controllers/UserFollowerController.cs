@@ -31,9 +31,17 @@ namespace UserProfileAPI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Create(UserFollower userFollower)
         {
-            await this.context.UserFollower.AddAsync(userFollower);
-            await this.context.SaveChangesAsync();
-            return this.Ok(userFollower);
+            var user = await    this.context.UserFollower.Where(x => x.FollowerId == userFollower.FollowerId && x.UserId == userFollower.UserId).FirstOrDefaultAsync();
+            if (user == null)
+            {
+                await this.context.UserFollower.AddAsync(userFollower);
+                await this.context.SaveChangesAsync();
+                return this.Ok(userFollower);
+            }
+            else
+            {
+                return Ok(user);
+            }
         }
 
         [HttpPut("")]

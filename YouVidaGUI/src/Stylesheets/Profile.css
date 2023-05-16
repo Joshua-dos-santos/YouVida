@@ -1,10 +1,29 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fbc2eb;
+.card .fa-plus {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 19vh;
+    color: #000000;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to top, #646cff, #ffffff);
+.card .fa-plus:hover {
+    color: #8398e9;
+}
 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to top, #646cff, #ffffff)
+.DeleteButton {
+    float: right;
+    margin-right: 1vw;
+    margin-top: 19vh;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.DeleteButton:hover {
+    background-color: darkred;
 }

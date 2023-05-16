@@ -1,0 +1,49 @@
+#userpic {
+    width: 2vw;
+    border-radius: 999px;
+    margin-right: 1vw;
+}
+
+.table-wrapper {
+    min-width: 100vw;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#SearchBar {
+    margin-left: 10vw;
+    width: 80vw;
+    border: gray 1px solid;
+    background-color: white;
+    color: black;
+}
+
+
+.fl-table {
+    width: 80vw;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.fl-table thead th {
+    padding: 0.5rem;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.fl-table tbody td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.fl-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+tbody {
+    color: #8398e9;
+}

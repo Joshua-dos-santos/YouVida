@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PostsAPI;
 using Polly;
+using PostsAPI.Interfaces;
+using PostsAPI.RabbitMQ;
 
 public class Program
 {
@@ -26,6 +28,7 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddScoped<ISubscriber, Subscriber>();
 
 
         var cs = builder.Configuration.GetConnectionString("DefaultConnection")!;
@@ -56,11 +59,25 @@ public class Program
                 dbContext.Database.Migrate();
             });
         }
+
+        using (var scope = app.Services.CreateScope())
+        {//Create subscriber that listens to the queue.
+            var subscriberContext = scope.ServiceProvider
+            .GetRequiredService<ISubscriber>();
+
+
+
+            subscriberContext.GetDeletedFromQueue();
+        }
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", string.Empty);
+            });
         }
 
         app.UseRouting();

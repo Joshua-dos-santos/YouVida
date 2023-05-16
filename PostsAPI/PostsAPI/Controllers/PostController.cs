@@ -19,8 +19,8 @@ namespace PostsAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Get()
-        {
-            return this.Ok(await this.context.Posts.ToListAsync());
+        { 
+            return this.Ok(await this.context.Posts.OrderByDescending(x => x.CreatedAt).ToListAsync());
         }
 
        
@@ -30,9 +30,16 @@ namespace PostsAPI.Controllers
             return this.Ok(await this.context.Posts.Where(x => x.PostId == postId).FirstOrDefaultAsync());
         }
 
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetByUser(string userId)
+        {
+            return this.Ok(await this.context.Posts.Where(x => x.CreatedBy == userId).OrderByDescending(x => x.CreatedAt).ToListAsync());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(Post post)
             {
+            post.CreatedAt = DateTime.Now.AddHours(2).ToString("dd/MM/yyyy HH:mm");
             await this.context.Posts.AddAsync(post);
             await this.context.SaveChangesAsync();
             return this.Ok(post);
