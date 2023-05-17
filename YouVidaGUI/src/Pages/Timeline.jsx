@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Postsapi from "../Services/Posts";
 import Posts from "../Components/Posts/Posts";
+import {useAuth0} from "@auth0/auth0-react";
 
 const Timeline = () => {
 
     const [posts, setPosts] = useState([])
+    const{isAuthenticated} = useAuth0()
 
     const getPosts = () => {
         Postsapi
@@ -19,6 +21,7 @@ const Timeline = () => {
     }, []);
 
     return(
+        isAuthenticated &&
         <div>
             {
                 posts.map((item)=>{
