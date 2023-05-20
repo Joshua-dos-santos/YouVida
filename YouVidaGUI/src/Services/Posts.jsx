@@ -26,7 +26,7 @@ const Postsapi = {
     },
 
     postNewPost: async (post) => {
-        return await API(`api/posts/Post`, {
+        return await axios(`https://10.0.81.165/api/posts/Post`, {
             method: 'post',
             headers: headers,
             data: post
