@@ -1,4 +1,5 @@
 import API from '../Services/api'
+import axios from "axios";
 
 const headers = {
     'Access-control-Allow-Origin': '*',
@@ -7,7 +8,7 @@ const headers = {
 
 const UserAPI = {
     postUser: async (user) => {
-        return await API(`api/users/User`,{
+        return await axios(`10.0.246.154/api/users/User`,{
             method: 'post',
             headers: headers,
             data: {
@@ -24,17 +25,17 @@ const UserAPI = {
             .catch((err) => err)
     },
     getUserById: async (id) => {
-        return await API.get(`api/users/User/${id}`)
+        return await axios.get(`10.0.246.154/api/users/User/${id}`)
             .then((res) => res)
             .catch((err) => err)
     },
     getAllUsers: async () => {
-        return await API.get(`api/users/User`)
+        return await axios.get(`10.0.246.154/api/users/User`)
             .then((res) => res)
             .catch((err) => err)
     },
     deleteUser: async (userId) => {
-        return await API.delete(`api/users/User/${userId}`, {
+        return await axios.delete(`10.0.246.154/api/users/User/${userId}`, {
             headers: headers
         })
             .then((res) => res)
