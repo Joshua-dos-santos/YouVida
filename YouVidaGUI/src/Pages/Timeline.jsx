@@ -18,7 +18,7 @@ const Timeline = () => {
 
     useEffect(() => {
         getPosts();
-    }, []);
+    }, [isAuthenticated]);
 
     return(
         isAuthenticated &&
