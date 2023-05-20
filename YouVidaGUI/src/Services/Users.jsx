@@ -8,7 +8,7 @@ const headers = {
 
 const UserAPI = {
     postUser: async (user) => {
-        return await axios(`10.0.246.154/api/users/User`,{
+        return await axios(`https://10.0.246.154/api/users/User`,{
             method: 'post',
             headers: headers,
             data: {
@@ -25,17 +25,17 @@ const UserAPI = {
             .catch((err) => err)
     },
     getUserById: async (id) => {
-        return await axios.get(`10.0.246.154/api/users/User/${id}`)
+        return await axios.get(`https://10.0.246.154/api/users/User/${id}`)
             .then((res) => res)
             .catch((err) => err)
     },
     getAllUsers: async () => {
-        return await axios.get(`10.0.246.154/api/users/User`)
+        return await axios.get(`https://10.0.246.154/api/users/User`)
             .then((res) => res)
             .catch((err) => err)
     },
     deleteUser: async (userId) => {
-        return await axios.delete(`10.0.246.154/api/users/User/${userId}`, {
+        return await axios.delete(`https://10.0.246.154/api/users/User/${userId}`, {
             headers: headers
         })
             .then((res) => res)

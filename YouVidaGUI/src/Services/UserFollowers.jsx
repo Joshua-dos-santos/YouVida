@@ -8,13 +8,13 @@ const headers = {
 
 const UserFollowersAPI = {
     fetchAllUserFollowers: async () => {
-        return await axios.get(`10.0.246.154/api/users/UserFollower`)
+        return await axios.get(`https://10.0.246.154/api/users/UserFollower`)
             .then((res) => res)
             .catch((err) => err)
     },
 
     postUserFollower: async (userId, followerId) => {
-        return await axios(`10.0.246.154/api/users/UserFollower`,{
+        return await axios(`https://10.0.246.154/api/users/UserFollower`,{
             method: 'post',
             headers: headers,
             data: {
@@ -27,7 +27,7 @@ const UserFollowersAPI = {
     },
 
     deleteUserFollower: async (userFollowerId) => {
-        return await API(`api/users/UserFollower`, {
+        return await axios(`https://10.0.246.154/api/users/UserFollower`, {
             method: 'delete',
             headers: headers,
             data: {
