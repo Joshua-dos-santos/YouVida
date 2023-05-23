@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: YouVida\YouVida\PostsAPI\PostsAPI/Dockerfile
+          file: PostsAPI/Dockerfile
           push: true
           tags: joshiiee7/postsapi:latest
