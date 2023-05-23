@@ -22,9 +22,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           logout: false
 
-      - name: Build and push Docker Compose
+      - name: Build Docker Compose
         run: |
-          docker image ls
           docker compose build
+          
+      - name: Push Docker Compose
+        run: |
           docker compose push
         
