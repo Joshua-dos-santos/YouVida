@@ -1,4 +1,5 @@
-.Pcard .fa-plus {
+.Pcard .fa-plus,
+.Pcard .download-icon{
     float: right;
     margin-right: 1vw;
     margin-top: 19vh;

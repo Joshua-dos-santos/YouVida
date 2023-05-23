@@ -10,7 +10,7 @@
     padding: 1em;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 40vw;
+    width: 80vw;
     margin-top: 2vh;
 }
 
@@ -61,20 +61,20 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 40vw;
+    width: 80vw;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
 }
 
 .timeline {
-    margin-left: 1vw;
     width: 100vw;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    align-items: center;
     gap: 1vh;
 }
 

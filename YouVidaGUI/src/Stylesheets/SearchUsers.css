@@ -13,12 +13,23 @@
 
 #SearchBar {
     margin-left: 10vw;
-    width: 80vw;
-    border: gray 1px solid;
+    padding: 10px;
+    width: 78vw;
+    border: 1px solid gray;
     background-color: white;
     color: black;
+    font-size: 16px;
+    border-radius: 4px;
 }
 
+#SearchBar:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#SearchBar::placeholder {
+    color: gray;
+}
 
 .fl-table {
     width: 80vw;

@@ -52,7 +52,9 @@ const GuestProfile = () => {
             <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length} profilepic={user.profilepic} loggedIn={false}/>
             {
                 posts.map((item)=>{
-                    return <Posts post={item} getPosts={getPosts} key={item.postId}/>
+                    return <div className="ProfilePosts" key={item.postId}>
+                    <Posts post={item} getPosts={getPosts} key={item.postId}/>
+                    </div>
                 })
             }
         </div>

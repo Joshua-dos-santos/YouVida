@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Modal, Button } from 'react-bootstrap';
 import {
     MDBCard,
@@ -9,12 +9,10 @@ import {
 } from "mdb-react-ui-kit";
 import '../../Stylesheets/Profile.css'
 import '../../Stylesheets/Modal.css'
-import {faSquarePlus} from "@fortawesome/free-solid-svg-icons";
+import {faDownload, faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useNavigate} from "react-router-dom";
 import UserAPI from "../../Services/Users";
 import {useAuth0} from "@auth0/auth0-react";
-import Postsapi from "../../Services/Posts";
 
 
 const Profile = ({postCount,
@@ -32,13 +30,24 @@ const Profile = ({postCount,
 
     const {logout} = useAuth0()
 
-    const navigate = useNavigate();
-
     const DeleteUser = (userId) => {
         UserAPI.deleteUser(userId)
             .then(() => logout())
             .catch(err => err)
     }
+
+    const handleDownloadData = (user) => {
+        const data = {user};
+        const jsonData = JSON.stringify(data);
+        const blob = new Blob([jsonData], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'user.json');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <div style={{backgroundColor: '#ffffff', minWidth: '100vw', marginTop: '1vh'}}>
@@ -57,6 +66,14 @@ const Profile = ({postCount,
                                         onClick={handleOpenModal}
                                     />
                                 )}
+                                {loggedIn &&
+                                <FontAwesomeIcon
+                                    icon={faDownload}
+                                    className="download-icon"
+                                    size="2xl"
+                                    onClick={() => handleDownloadData(user)}
+                                />
+                                }
                                 {loggedIn &&
                                 <button className='DeleteButton'
                                         onClick={() => DeleteUser(user?.sub?.replace("|", "t"))}>
@@ -78,7 +95,7 @@ const Profile = ({postCount,
                             <div style={{
                                 backgroundColor: '#f8f9fa',
                                 minWidth: '100%',
-                                minHeight: '30vh',
+                                minHeight: '10vh',
                                 boxShadow: ' #002c48 1px 1px 3px 3px'
                             }}>
                                 {user.username == null &&
@@ -92,7 +109,6 @@ const Profile = ({postCount,
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
-
 
             {showModal && (
                 <div className="modal-overlay">
@@ -114,7 +130,7 @@ const Profile = ({postCount,
                                         name="body"
                                         value={formData.body}
                                         onChange={(e) =>
-                                            setFormData({ ...formData, body: e.target.value })
+                                            setFormData({...formData, body: e.target.value})
                                         }
                                     />
                                     <span>Body</span>
@@ -135,6 +151,4 @@ const Profile = ({postCount,
         </div>
     );
 }
-
-
 export default Profile;
