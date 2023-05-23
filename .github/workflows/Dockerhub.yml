@@ -27,6 +27,7 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          logout: false
 
       - name: Build and push Docker Compose
         run: |
