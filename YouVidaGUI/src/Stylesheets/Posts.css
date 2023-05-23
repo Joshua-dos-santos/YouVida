@@ -1,71 +1,107 @@
-.postBody {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    min-width: 100%;
-    min-height: 30vh;
-    box-shadow: 1px 1px 3px 3px var(--main-color);
-    display: flex;
-    flex-direction: column;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    margin-left: 3vw;
-}
-
-.postBody img {
-    float: left;
-    border-radius: 50%;
-    width: 3vw;
-}
-
-.postBody h4 {
-    float: left;
-    color: var(--text-color);
-}
-
-.card h1,
-.card h2,
-.card h4 {
-    color: var(--text-color);
-    margin-left: 2vw;
-}
-
-.card .fa-trash-can {
-    float: right;
-    margin-right: 1vw;
-    margin-top: 1vh;
-    color: var(--text-color);
-}
-
-.card .fa-trash-can:hover {
-    color: red;
-}
-
-.card .fa-thumbs-up {
-    float: right;
-    color: var(--text-color);
-}
-
-.card p {
-    float: right;
-    margin-top: 3vh;
-}
-
-.cardBody{
-    display: flex;
-    flex-direction: column;
-}
-
-.card-container {
-    background-color: var(--bg-color);
-    min-width: 90vw;
-    min-height: 20vh;
-    margin-right: 2vw;
-}
-
-
 .Likes{
     display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: end;
 }
+
+.Postcard {
+    background-color: #30344c;
+    padding: 1em;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 40vw;
+    margin-top: 2vh;
+}
+
+.username img {
+    border-radius: 999px;
+    width: 2vw;
+    padding: 0.5vw;
+}
+
+.username {
+    color: #C6E1ED;
+    font-size: medium;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.body .text {
+    margin: 0 10px 0 0;
+    white-space: pre-line;
+    color: #c0c3d7;
+    font-weight: 400;
+    font-size: x-large;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.footer {
+    width: 100%;
+    color: #9fa4aa;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    margin-top: 10px;
+}
+
+.footer div {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 40vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.timeline {
+    margin-left: 1vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 1vh;
+}
+
+.ProfilePosts {
+    margin-left: 1vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 1vh;
+}
+
+.footer .fa-trash-can {
+    color: #9fa4aa;
+}
+
+.footer .fa-trash-can:hover {
+    color: red;
+}
+
+
+
+
+
+
+
+
+

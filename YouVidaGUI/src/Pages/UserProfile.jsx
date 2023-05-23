@@ -13,6 +13,32 @@ const UserProfile = () => {
     const [posts, setPosts] = useState([])
     const [userFollowers, setUserFollowers] = useState([])
     const [userFollowing, setUserFollowing] = useState([])
+    const [showModal, setShowModal] = useState(false);
+    const [formData, setFormData] = useState({
+        title: "",
+        body: "",
+    });
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleData = (formData) => {
+        Postsapi.postNewPost({
+            title: formData.title,
+            body: formData.body,
+            createdBy: user.sub.replace("|", "t"),
+        })
+            .then(() => {
+                UserAPI.postUser(user).then((res) => res);
+                handleCloseModal();
+            })
+            .catch((err) => console.log(err));
+    };
 
     const getPosts = () => {
         Postsapi.fetchPostsByUser(user?.sub?.replace("|", "t")).then((res) => {
@@ -37,9 +63,9 @@ const UserProfile = () => {
     useEffect(() => {
         getPosts();
         getFollows();
-    }, [user]);
+    }, [showModal]);
 
-    useEffect(() =>{
+    useEffect(() => {
         createUser();
     }, [user])
 
@@ -50,10 +76,23 @@ const UserProfile = () => {
     return (
         isAuthenticated &&
         <div>
-            <Profile postCount={posts.length} user={user} followerCount={userFollowers.length} followingCount={userFollowing.length} profilepic={user.picture} loggedIn={true}/>
+            <Profile postCount={posts.length}
+                     user={user}
+                     followerCount={userFollowers.length}
+                     followingCount={userFollowing.length}
+                     profilepic={user.picture}
+                     loggedIn={true}
+                     showModal={showModal}
+                     handleOpenModal={handleOpenModal}
+                     handleCloseModal={handleCloseModal}
+                     handleData={handleData}
+                     formData={formData}
+                     setFormData={setFormData}/>
             {
-                posts.map((item)=>{
-                    return <Posts post={item} getPosts={getPosts} key={item.postId}/>
+                posts.map((item) => {
+                    return <div className="ProfilePosts" key={item.postId}>
+                        <Posts post={item} getPosts={getPosts} key={item.postId}/>
+                    </div>
                 })
             }
         </div>

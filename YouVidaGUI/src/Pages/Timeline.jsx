@@ -6,7 +6,6 @@ import {useAuth0} from "@auth0/auth0-react";
 const Timeline = () => {
 
     const [posts, setPosts] = useState([])
-    const{isAuthenticated} = useAuth0()
 
     const getPosts = () => {
         Postsapi
@@ -18,11 +17,10 @@ const Timeline = () => {
 
     useEffect(() => {
         getPosts();
-    }, [isAuthenticated]);
+    }, []);
 
     return(
-        isAuthenticated &&
-        <div>
+        <div className="timeline">
             {
                 posts.map((item)=>{
                     return <Posts post={item} key={item.postId}/>

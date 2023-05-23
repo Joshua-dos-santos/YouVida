@@ -1,5 +1,4 @@
 import API from '../Services/api'
-import axios from "axios";
 
 const headers = {
     'Access-control-Allow-Origin': '*',
@@ -8,13 +7,13 @@ const headers = {
 
 const UserFollowersAPI = {
     fetchAllUserFollowers: async () => {
-        return await axios.get(`https://10.0.246.154/api/users/UserFollower`)
+        return await API.get(`api/users/UserFollower`)
             .then((res) => res)
             .catch((err) => err)
     },
 
     postUserFollower: async (userId, followerId) => {
-        return await axios(`https://10.0.246.154/api/users/UserFollower`,{
+        return await API(`api/users/UserFollower`,{
             method: 'post',
             headers: headers,
             data: {
@@ -27,7 +26,7 @@ const UserFollowersAPI = {
     },
 
     deleteUserFollower: async (userFollowerId) => {
-        return await axios(`https://10.0.246.154/api/users/UserFollower`, {
+        return await API(`api/users/UserFollower`, {
             method: 'delete',
             headers: headers,
             data: {

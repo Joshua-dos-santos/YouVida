@@ -1,4 +1,4 @@
-.card .fa-plus {
+.Pcard .fa-plus {
     float: right;
     margin-right: 1vw;
     margin-top: 19vh;
@@ -7,7 +7,7 @@
     transition: color 0.2s ease-in-out;
 }
 
-.card .fa-plus:hover {
+.Pcard .fa-plus:hover {
     color: #8398e9;
 }
 

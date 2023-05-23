@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             clientId={clientId}
             audience={identifier}
             authorizationParams={{
-                redirect_uri:"https://20.42.26.0/"
+                redirect_uri:"http:localhost:8069/"
             }}
             useRefreshTokens
             cacheLocation="localstorage"
