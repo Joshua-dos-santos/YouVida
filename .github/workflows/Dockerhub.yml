@@ -40,7 +40,7 @@ jobs:
           
       - name: Azure Login
         run: |
-          az login --username ${{secrets.AZURE_USERNAME}} --password ${{secrets.AZURE_PASSWORD}}
+          az login --username 457107@student.fontys.nl --password ${{secrets.AZURE_PASSWORD}}
           
       - name: Azure AKS Set Context
         run: |
