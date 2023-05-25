@@ -45,8 +45,8 @@ jobs:
           
       - name: Azure AKS Set Context
         run: |
-          az aks get-credentials --name youvida --resource-group Resource
+          az aks get-credentials --name youvidaservice --resource-group Resource
 
       - name: Update Kubernetes Deployment
         run: |
-          kubectl apply -f prototypes/Kubernetes/YouVidaPrototypes/deployment.yaml
+          kubectl apply -f YouVidaPrototypes/deployment.yaml
