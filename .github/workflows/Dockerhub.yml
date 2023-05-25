@@ -5,6 +5,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
+env:
+ DOCKER_IMAGE_NAME: myapp
+ DOCKER_IMAGE_TAG: ${{ github.sha }}
+ K8S_NAMESPACE: mynamespace
+ K8S_DEPLOYMENT_NAME: myapp
+ K8S_CONTAINER_NAME: myapp
 
 jobs:
   deploy:
@@ -38,22 +45,23 @@ jobs:
         run: |
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
           
-      - name: Azure Login
+      # Install kubectl
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+      
+      # Login to Azure
+      - name: Azure login
         uses: azure/login@v1
         with:
-          creds: |
-            {
-              "clientId": "${{ secrets.AZURE_CLIENT_ID }}",
-              "clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}",
-              "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
-              "subscriptionId": "b11a00af-ec04-4b32-9d1a-18bd3abf5f78"
-            }
-
-      - name: Azure AKS Set Context
-        run: az aks get-credentials --name youvida --resource-group Resource --subscription b11a00af-ec04-4b32-9d1a-18bd3abf5f78
-
-      - name: Update Kubernetes Deployment
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      # Update the deployment with the new Docker image
+      - name: Update Kubernetes deployment
         run: |
-          az kubernetes cluster kubeconfig get-credentials --name youvida --resource-group Resource --subscription b11a00af-ec04-4b32-9d1a-18bd3abf5f78
-          kubectl apply -f prototypes/Kubernetes/deployment.yaml
-        
+          kubectl set image deployment/${{ env.K8S_DEPLOYMENT_NAME }} \
+            ${env.K8S_CONTAINER_NAME}=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }} \
+            -n ${env.K8S_NAMESPACE}
+          kubectl rollout status deployment/${{ env.K8S_DEPLOYMENT_NAME }} -n ${env.K8S_NAMESPACE}
