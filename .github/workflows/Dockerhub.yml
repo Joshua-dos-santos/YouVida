@@ -35,7 +35,8 @@ jobs:
           docker-compose push
           
       - name: Install Azure CLI
-        uses: azure/cli-action@v1
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
       - name: Azure AKS Set Context
         run: az aks set-context --name youvida --resource-group Resource --subscription b11a00af-ec04-4b32-9d1a-18bd3abf5f78
