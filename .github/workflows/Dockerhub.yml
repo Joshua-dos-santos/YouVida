@@ -39,8 +39,9 @@ jobs:
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
           
       - name: Azure Login
-        run: |
-          az login --username 457107@student.fontys.nl --password ${{secrets.AZURE_PASSWORD}}
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - name: Azure AKS Set Context
         run: |
