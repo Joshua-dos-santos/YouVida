@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youvidagui
+  labels:
+    app: youvidagui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: youvidagui
+  template:
+    metadata:
+      labels:
+        app: youvidagui
+    spec:
+      containers:
+        - name: youvidagui
+          image: joshiiee7/youvidagui
+          ports:
+            - containerPort: 80
+---            
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tagapi
+  labels:
+    app: tagapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tagapi
+  template:
+    metadata:
+      labels:
+        app: tagapi
+    spec:
+      containers:
+        - name: tagapi
+          image: joshiiee7/tagapi
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postsapi
+  labels:
+    app: postsapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postsapi
+  template:
+    metadata:
+      labels:
+        app: postsapi
+    spec:
+      containers:
+        - name: postsapi
+          image: joshiiee7/postsapi
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofileapi
+  labels:
+    app: userprofileapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userprofileapi
+  template:
+    metadata:
+      labels:
+        app: userprofileapi
+    spec:
+      containers:
+        - name: userprofileapi
+          image: joshiiee7/userprofileapi
+          ports:
+            - containerPort: 80

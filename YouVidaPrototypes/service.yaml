@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: youvidagui-service
+spec:
+  selector:
+    app: youvidagui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tagapi-service
+spec:
+  selector:
+    app: tagapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postsapi-service
+spec:
+  selector:
+    app: postsapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userprofileapi-service
+spec:
+  selector:
+    app: userprofileapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
