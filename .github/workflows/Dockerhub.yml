@@ -33,4 +33,15 @@ jobs:
       - name: Push Docker Compose
         run: |
           docker-compose push
+          
+      - name: Install Azure CLI
+        uses: azure/cli-action@v1
+
+      - name: Azure AKS Set Context
+        run: az aks set-context --name youvida --resource-group Resource --subscription b11a00af-ec04-4b32-9d1a-18bd3abf5f78
+
+      - name: Update Kubernetes Deployment
+        run: |
+          az kubernetes cluster kubeconfig get-credentials --name youvida --resource-group Resource --subscription b11a00af-ec04-4b32-9d1a-18bd3abf5f78
+          kubectl apply -f prototypes/Kubernetes/deployment.yaml
         
