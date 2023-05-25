@@ -49,4 +49,4 @@ jobs:
 
       - name: Update Kubernetes Deployment
         run: |
-          kubectl apply -f prototypes/Kubernetes/YouVidaPrototypes/deployment.yaml
+          kubectl apply -f YouVidaPrototypes/deployment.yaml
