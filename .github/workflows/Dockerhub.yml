@@ -47,6 +47,6 @@ jobs:
         run: |
           az aks get-credentials --name youvida --resource-group Resource
 
-      - name: Update Kubernetes Deployment
+      - name: Update Kubernetes deployment
         run: |
           kubectl apply -f prototypes/Kubernetes/deployment.yaml
