@@ -22,7 +22,7 @@ namespace PostsAPI.RabbitMQ
             IConnectionFactory connectionFactory = new ConnectionFactory()
             {
                 HostName = "host.docker.internal",
-                Port = 5672,
+                Port = 15672,
                 UserName = "guest",
                 Password = "guest",
             };
