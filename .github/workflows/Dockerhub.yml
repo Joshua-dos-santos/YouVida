@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: cschleiden/replace-tokens@v1
         with:
-         files: '["**/*.cs"]'
+          files: '["**/*.cs"]'
         env:
-         RMQCONNECTIONSTRING: ${{ secrets.RMQ_CONNECTION_STRING }}
+          RMQCONNECTIONSTRING: ${{ secrets.RMQ_CONNECTION_STRING }}
 
       - name: Checkout repository
         uses: actions/checkout@v2
