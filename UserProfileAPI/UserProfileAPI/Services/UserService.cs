@@ -66,13 +66,8 @@ namespace UserProfileAPI.Services
                     }
                 }
 
-                var connectionFactory = new ConnectionFactory()
-                {
-                    HostName = "amqps://jfxcfvtf:TSoTT9vnK2K0ijsif4JOVSaGomPOWyIg@fly.rmq.cloudamqp.com/jfxcfvtf",
-                    Port = 5672,
-                    UserName = "guest",
-                    Password = "guest",
-                };
+                ConnectionFactory connectionFactory = new ConnectionFactory();
+                connectionFactory.Uri = new Uri("#{RMQCONNECTIONSTRING}#");
                 using (var connection = connectionFactory.CreateConnection())
                 {
                     var channel = connection.CreateModel();

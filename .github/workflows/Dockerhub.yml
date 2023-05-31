@@ -11,6 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: cschleiden/replace-tokens@v1
+        with:
+         files: '["**/*.cs"]'
+        env:
+         RMQCONNECTIONSTRING: ${{ secrets.RMQ_CONNECTION_STRING }}
+
+
       - name: Checkout repository
         uses: actions/checkout@v2
 

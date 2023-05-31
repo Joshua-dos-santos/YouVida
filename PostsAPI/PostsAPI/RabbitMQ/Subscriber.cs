@@ -19,13 +19,8 @@ namespace PostsAPI.RabbitMQ
             string routingKey = "userDelete";
             string queue = "user";
 
-            IConnectionFactory connectionFactory = new ConnectionFactory()
-            {
-                HostName = "amqps://jfxcfvtf:TSoTT9vnK2K0ijsif4JOVSaGomPOWyIg@fly.rmq.cloudamqp.com/jfxcfvtf",
-                Port = 5672,
-                UserName = "guest",
-                Password = "guest",
-            };
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+            connectionFactory.Uri = new Uri("#{RMQCONNECTIONSTRING}#");
 
             IConnection connection = connectionFactory.CreateConnection();
 
