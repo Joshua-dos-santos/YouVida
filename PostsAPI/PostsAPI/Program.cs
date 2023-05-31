@@ -67,7 +67,7 @@ public class Program
 
 
 
-            subscriberContext.GetDeletedFromQueue();
+            //subscriberContext.GetDeletedFromQueue();
         }
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
