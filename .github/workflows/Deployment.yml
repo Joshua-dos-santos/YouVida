@@ -55,4 +55,5 @@ jobs:
 
       - name: Update Kubernetes Deployment
         run: |
-          kubectl apply -f YouVidaPrototypes/deployment.yaml --namespace ingress-nginx
+          kubectl get deployments -n ingress-nginx -o custom-columns=:metadata.name --no-headers | xargs -I {} kubectl rollout restart deployment/{} -n ingress-nginx
+
