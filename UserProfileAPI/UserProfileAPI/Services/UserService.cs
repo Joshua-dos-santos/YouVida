@@ -69,7 +69,7 @@ namespace UserProfileAPI.Services
                 var connectionFactory = new ConnectionFactory()
                 {
                     HostName = "iqadot.westeurope.cloudapp.azure",
-                    Port = 15672,
+                    Port = 5672,
                     UserName = "guest",
                     Password = "guest",
                 };
