@@ -20,7 +20,7 @@ namespace PostsAPI.RabbitMQ
             string queue = "user";
 
             ConnectionFactory connectionFactory = new ConnectionFactory();
-            connectionFactory.Uri = new Uri("#{RMQCONNECTIONSTRING}#");
+            connectionFactory.Uri = new Uri("#{RMQCONNECTIONSTRING}");
 
             IConnection connection = connectionFactory.CreateConnection();
 
