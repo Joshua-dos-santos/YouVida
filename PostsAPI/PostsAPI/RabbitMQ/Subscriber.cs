@@ -21,7 +21,7 @@ namespace PostsAPI.RabbitMQ
 
             IConnectionFactory connectionFactory = new ConnectionFactory()
             {
-                HostName = "iqadot.westeurope.cloudapp.azure",
+                HostName = "iqadot.westeurope.cloudapp.azure.com",
                 Port = 5672,
                 UserName = "guest",
                 Password = "guest",
