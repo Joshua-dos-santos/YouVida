@@ -20,7 +20,7 @@ namespace PostsAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         { 
-            return this.Ok(await this.context.Posts.OrderByDescending(x => x.CreatedAt).ToListAsync());
+            return this.Ok(await this.context.Posts.OrderBy(x => x.CreatedAt).ToListAsync());
         }
 
        
