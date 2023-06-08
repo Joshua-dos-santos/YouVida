@@ -163,4 +163,4 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
-          target: 'https://joshua.mdjansen.nl/'
+          docker_name: joshiiee7/youvidagui
