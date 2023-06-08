@@ -155,3 +155,12 @@ jobs:
       - name: Build YouVidaGUI
         working-directory: YouVidaGUI/
         run: npm run build
+        
+  OWASP-ZAP:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'https://joshua.mdjansen.nl/'
