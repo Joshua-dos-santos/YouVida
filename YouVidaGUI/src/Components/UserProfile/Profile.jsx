@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import {
     MDBCard,
     MDBCardImage,
@@ -15,7 +15,9 @@ import UserAPI from "../../Services/Users";
 import {useAuth0} from "@auth0/auth0-react";
 
 
-const Profile = ({postCount,
+const Profile = ({
+                     postCount,
+                     posts,
                      user,
                      followerCount,
                      followingCount,
@@ -26,7 +28,8 @@ const Profile = ({postCount,
                      handleCloseModal,
                      handleData,
                      formData,
-                     setFormData}) => {
+                     setFormData
+                 }) => {
 
     const {logout} = useAuth0()
 
@@ -37,9 +40,9 @@ const Profile = ({postCount,
     }
 
     const handleDownloadData = (user) => {
-        const data = {user};
+        const data = {user, posts};
         const jsonData = JSON.stringify(data);
-        const blob = new Blob([jsonData], { type: 'application/json' });
+        const blob = new Blob([jsonData], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
