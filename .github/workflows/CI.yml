@@ -160,17 +160,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: ZAP Scan gui
+      - name: ZAP Scan 
         uses: zaproxy/action-full-scan@v0.4.0
         with:
-          docker_name: joshiiee7/youvidagui
+          target: https://joshua.mdjansen.nl/
           
-      - name: ZAP Scan postsapi
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          docker_name: joshiiee7/postsapi
-      
-      - name: ZAP Scan userprofileapi
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          docker_name: joshiiee7/userprofileapi
