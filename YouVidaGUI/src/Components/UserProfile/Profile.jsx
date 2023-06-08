@@ -15,7 +15,7 @@ import UserAPI from "../../Services/Users";
 import {useAuth0} from "@auth0/auth0-react";
 
 
-const Profile = ({posts,
+const Profile = ({postCount,
                      user,
                      followerCount,
                      followingCount,
@@ -36,8 +36,8 @@ const Profile = ({posts,
             .catch(err => err)
     }
 
-    const handleDownloadData = (posts) => {
-        const data = {posts};
+    const handleDownloadData = (user) => {
+        const data = {user};
         const jsonData = JSON.stringify(data);
         const blob = new Blob([jsonData], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -71,7 +71,7 @@ const Profile = ({posts,
                                     icon={faDownload}
                                     className="download-icon"
                                     size="2xl"
-                                    onClick={() => handleDownloadData(user, posts)}
+                                    onClick={() => handleDownloadData(user)}
                                 />
                                 }
                                 {loggedIn &&
@@ -80,7 +80,7 @@ const Profile = ({posts,
                                     Delete Account
                                 </button>
                                 }
-                                <h2 style={{color: 'Black', float: 'right', marginRight: '2vw'}}>Posts: {posts.length}</h2>
+                                <h2 style={{color: 'Black', float: 'right', marginRight: '2vw'}}>Posts: {postCount}</h2>
                                 <h2 style={{
                                     color: 'Black',
                                     float: 'right',

@@ -76,7 +76,7 @@ const UserProfile = () => {
     return (
         isAuthenticated &&
         <div>
-            <Profile post={posts}
+            <Profile postCount={posts.length}
                      user={user}
                      followerCount={userFollowers.length}
                      followingCount={userFollowing.length}
