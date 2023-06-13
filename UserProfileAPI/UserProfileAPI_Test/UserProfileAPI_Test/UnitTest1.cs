@@ -12,7 +12,7 @@ using UserProfileAPI.Services.Interfaces;
 namespace UserProfileAPI_Test
 {
     [TestFixture]
-    public class UsersControllerTests
+    public class UserProfile_APITests
     {
         private UserController controller;
         private Mock<IUserService> userService;
@@ -59,6 +59,66 @@ namespace UserProfileAPI_Test
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
             Assert.AreEqual(user, okResult.Value);
+        }
+
+        [Test]
+        public async Task Create_ValidUser_ReturnsOkResult()
+        {
+            // Arrange
+            var user = new User { UserId = "user3", Username = "Alice" };
+            userService.Setup(r => r.CreateUser(user)).ReturnsAsync(user);
+
+            // Act
+            var result = await controller.Create(user);
+
+            // Assert
+            Assert.IsInstanceOf<OkObjectResult>(result);
+            var okResult = result as OkObjectResult;
+            Assert.AreEqual(user, okResult.Value);
+        }
+
+        [Test]
+        public async Task Update_ValidUser_ReturnsOkResult()
+        {
+            // Arrange
+            var user = new User { UserId = "user1", Username = "John Doe" };
+            userService.Setup(r => r.UpdateUser(user)).ReturnsAsync(user);
+
+            // Act
+            var result = await controller.Update(user);
+
+            // Assert
+            Assert.IsInstanceOf<OkObjectResult>(result);
+            var okResult = result as OkObjectResult;
+            Assert.AreEqual(user, okResult.Value);
+        }
+
+        [Test]
+        public async Task Delete_ExistingUserId_ReturnsOkResult()
+        {
+            // Arrange
+            var userId = "user1";
+            userService.Setup(r => r.DeleteUser(userId)).ReturnsAsync(true);
+
+            // Act
+            var result = await controller.Delete(userId);
+
+            // Assert
+            Assert.IsInstanceOf<OkResult>(result);
+        }
+
+        [Test]
+        public async Task Delete_NonExistingUserId_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var userId = "user3";
+            userService.Setup(r => r.DeleteUser(userId)).ReturnsAsync(false);
+
+            // Act
+            var result = await controller.Delete(userId);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestResult>(result);
         }
     }
 }
