@@ -41,7 +41,7 @@ namespace UserProfileAPI_Test
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(users, okResult.Value);
+            Assert.That(okResult.Value, Is.EqualTo(users));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace UserProfileAPI_Test
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(user, okResult.Value);
+            Assert.That(okResult.Value, Is.EqualTo(user));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace UserProfileAPI_Test
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(user, okResult.Value);
+            Assert.That(okResult.Value, Is.EqualTo(user));
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace UserProfileAPI_Test
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(user, okResult.Value);
+            Assert.That(okResult.Value, Is.EqualTo(user));
         }
 
         [Test]
