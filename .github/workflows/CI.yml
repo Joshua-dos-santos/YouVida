@@ -120,7 +120,7 @@ jobs:
       run: dotnet build --no-restore -warnaserror
       
     - name: Test UserProfileAPI
-      working-directory: UserProfileAPI/UserProfile_Test/
+      working-directory: UserProfile_Test/
       run: dotnet test
       
   build-and-test-YouVidaGateway:
