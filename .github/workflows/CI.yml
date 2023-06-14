@@ -119,6 +119,10 @@ jobs:
       working-directory: UserProfileAPI/
       run: dotnet build --no-restore -warnaserror
       
+    - name: Test UserProfileAPI
+      working-directory: UserProfileAPI/UserProfile_Test/
+      run: dotnet test
+      
   build-and-test-YouVidaGateway:
     runs-on: ubuntu-latest
     
