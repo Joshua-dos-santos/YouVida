@@ -62,7 +62,7 @@ jobs:
         with:
           node-version: 18
       - name: Install Playwright Browsers
-        run: npx playwright@latest
+        run: npx init playwright@latest
       - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v3
